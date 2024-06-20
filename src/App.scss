@@ -1,0 +1,232 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+:root {
+  --font-primary: var(--inter-font);
+  --font-seondary: var(--space_grotesk-font);
+  --font-secondary: var(--space_grotesk-font);
+
+  /**
+  BUTTON
+  **/
+  --button-font-size: 0.875rem;
+  --button-font-weight: 500;
+  --button-border-radius: 20px;
+  --button-border-stroke: 2px;
+  --button-padding-large: 12px 18px;
+  --button-padding-large-round: 12px;
+  --button-padding-medium: 8px 16px;
+  --button-padding-medium-round: 8px;
+  --button-padding-small: 6px 12px;
+  --button-padding-small-round: 6px;
+
+  /**
+  COPY BUTTON
+  **/
+  --copy-button-font-size: 0.875rem;
+  --copy-button-font-weight: 500;
+
+  /**
+  CHECKBOX
+  **/
+  --checkbox-label-font-size: 0.875rem;
+  --checkbox-label-font-weight: 500;
+
+  /**
+  INPUTS
+  **/
+  --input-label-font-size: 0.875rem;
+  --input-label-font-weight: 600;
+  --input-font-size: 0.875rem;
+  --input-info-font-size: 0.875rem;
+  --input-border-radius: 12px;
+  --input-padding: 12px;
+
+  /**
+  DROPDOWN
+  **/
+  --dropdown-margin-top: 12px;
+  --dropdown-border-radius: 4px;
+
+  /**
+  BADGE
+  **/
+  --badge-font-size: 0.875rem;
+  --badge-font-weight: 500;
+  --badge-padding: 5px 12px;
+  --badge-border-radius: 56px;
+  --badge-line-height: 26px;
+  --badge-line-height: 26px;
+
+  /**
+  RADIO
+  **/
+  --radio-label-font-size: 0.875rem;
+  --radio-label-font-weight: 500;
+
+  /**
+  SWITCH
+  **/
+  --switch-font-weight: 500;
+
+  /**
+  TOOLTIP
+  **/
+  --tooltip-font-size: 0.875rem;
+  --tooltip-font-weight: 500;
+  --tooltip-width: 250px;
+
+  /**
+PRIMARY INTERACTION
+**/
+  --color-interaction-primary: #0b3d0b;
+  --color-interaction-primary-hover: #115111;
+  --color-interaction-primary-active: #115111;
+  --color-interaction-primary-disabled: rgba(176, 176, 176, 0.5);
+  --color-interaction-primary-alt: #ffffff;
+  --color-interaction-primary-alt-hover: #d3ffd3;
+  --color-interaction-primary-alt-active: #b8ffb8;
+  --color-interaction-primary-alt-disabled: #e7e7e7;
+
+  /**
+SECONDARY INTERACTION
+**/
+  --color-interaction-secondary: #333333;
+  --color-interaction-secondary-hover: #4d4d4d;
+  --color-interaction-secondary-active: #666666;
+  --color-interaction-secondary-disabled: rgba(176, 176, 176, 0.5);
+  --color-interaction-secondary-alt: #444444;
+  --color-interaction-secondary-alt-hover: #666666;
+  --color-interaction-secondary-alt-active: #808080;
+  --color-interaction-secondary-alt-disabled: #4d4d4d;
+
+  /**
+SEMANTIC
+**/
+  --color-semantic-info: #0073bd;
+  --color-semantic-info-hover: #1c84cc;
+  --color-semantic-info-active: #3895d8;
+  --color-semantic-disabled: #6f6f6f;
+  --color-semantic-success: #0c884c;
+  --color-semantic-success-hover: #229a60;
+  --color-semantic-success-active: #39ab74;
+  --color-semantic-success-disabled: #767676;
+  --color-semantic-warning: #e9a949;
+  --color-semantic-warning-hover: #b8771c;
+  --color-semantic-warning-active: #c78938;
+  --color-semantic-warning-disabled: #747474;
+  --color-semantic-critical: #d32947;
+  --color-semantic-critical-hover: #de3a57;
+  --color-semantic-critical-active: #e84d68;
+  --color-semantic-critical-disabled: #6e6e6e;
+  --color-semantic-critical-bg-alt: #f9e1e5;
+  --color-semantic-neutral: #8a8a8a;
+  --color-semantic-neutral-hover: #6f6f6f;
+  --color-semantic-neutral-active: #535353;
+  --color-semantic-neutral-inactive: #4d4d4d;
+
+  /**
+TEXT
+**/
+  --color-text-main: #000000;
+  --color-text-subtle: #a6a6a6;
+  --color-text-reverse: #d1d1d1;
+  --color-text-reverse-subtle: #1e1e1e;
+  --color-text-disabled: #6f6f6f;
+  --color-text-info: #d1d1d1;
+  --color-text-success: #d1d1d1;
+  --color-text-warning: #d1d1d1;
+  --color-text-critical: #d1d1d1;
+
+  /**
+BORDER
+**/
+  --color-border-1: #333333;
+  --color-border-2: #4d4d4d;
+  --color-border-3: rgba(77, 77, 77, 0.2);
+
+  /**
+NEUTRALS
+**/
+  --color-neutral-0: #1e1e1e;
+  --color-neutral-0-reverse: #d1d1d1;
+  --color-neutral-1: #2b2b2b;
+  --color-neutral-2: #333333;
+  --color-neutral-3: #4d4d4d;
+
+  /**
+STATUS
+**/
+  --color-status-ready: #007f0e;
+  --color-status-offline: #5b5b5b;
+  --color-status-busy: #d36f1e;
+
+  /**
+BACKGROUNDS
+**/
+  --color-background-overlay: rgba(0, 23, 10, 0.4);
+  --color-background-subtle-callout: #2b2b2b;
+  --color-background-modal-overlay: rgba(0, 0, 0, 0.3);
+  --color-background-critical: #2b1e1e;
+  --color-background-neutral-0: #1e1e1e;
+
+  /**
+MENU
+**/
+  --color-interactions-menu: #d1d1d1;
+  --color-interactions-menu-hover: #4d4d4d;
+  --color-interactions-menu-inactive: #a6a6a6;
+
+  /**
+Badge
+**/
+  --color-badge-primary-bg: #1e1e1e;
+  --color-badge-primary-text: #d1d1d1;
+  --color-badge-secondary-bg: #4d4d4d;
+  --color-badge-secondary-text: #d1d1d1;
+
+  /**
+BUTTON
+**/
+  --copy-button-text-color: #a6a6a6;
+}

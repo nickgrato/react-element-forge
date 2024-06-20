@@ -1,0 +1,310 @@
+@use "./tools/media-queries.scss" as *;
+
+// ---------------------------------
+//  Layout
+// ---------------------------------
+
+// Create Size Value Array
+$start: 0;
+$end: 40;
+$array: "";
+$unit: "px";
+
+@for $i from $start + 1 through $end {
+  $array: append($array, $i, comma);
+  $array: set-nth($array, 1, $start);
+}
+
+@each $size in $array {
+  /**
+  PADDING
+  **/
+
+  // Padding: General
+  .p-#{$size}#{$unit} {
+    padding: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        padding: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        padding: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Padding: Horizontal
+  .px-#{$size}#{$unit} {
+    padding-left: #{$size}#{$unit};
+    padding-right: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        padding-left: #{$size}#{$unit};
+        padding-right: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        padding-left: #{$size}#{$unit};
+        padding-right: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Padding: Vertical
+  .py-#{$size}#{$unit} {
+    padding-top: #{$size}#{$unit};
+    padding-bottom: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        padding-top: #{$size}#{$unit};
+        padding-bottom: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        padding-top: #{$size}#{$unit};
+        padding-bottom: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Padding: Top
+  .pt-#{$size}#{$unit} {
+    padding-top: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        padding-top: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        padding-top: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Padding: bottom
+  .pb-#{$size}#{$unit} {
+    padding-bottom: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        padding-bottom: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        padding-bottom: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Padding: Right
+  .pr-#{$size}#{$unit} {
+    padding-right: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        padding-right: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        padding-right: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Padding: Left
+  .pl-#{$size}#{$unit} {
+    padding-left: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        padding-left: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        padding-left: #{$size}#{$unit};
+      }
+    }
+  }
+
+  /**
+  MARGIN
+  **/
+
+  // Margin: General
+  .m-#{$size}#{$unit} {
+    margin: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        margin: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        margin: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Margin: Horizontal
+  .mx-#{$size}#{$unit} {
+    margin-left: #{$size}#{$unit};
+    margin-right: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        margin-left: #{$size}#{$unit};
+        margin-right: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        margin-left: #{$size}#{$unit};
+        margin-right: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Margin: Vertical
+  .my-#{$size}#{$unit} {
+    margin-top: #{$size}#{$unit};
+    margin-bottom: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        margin-top: #{$size}#{$unit};
+        margin-bottom: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        margin-top: #{$size}#{$unit};
+        margin-bottom: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Margin: Top
+  .mt-#{$size}#{$unit} {
+    margin-top: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        margin-top: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        margin-top: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Margin: Top
+  .mb-#{$size}#{$unit} {
+    margin-bottom: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        margin-bottom: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        margin-bottom: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Margin: Right
+  .mr-#{$size}#{$unit} {
+    margin-right: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        margin-right: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        margin-right: #{$size}#{$unit};
+      }
+    }
+  }
+
+  // Margin: Left
+  .ml-#{$size}#{$unit} {
+    margin-left: #{$size}#{$unit};
+    &-dt {
+      @include mobile-up {
+        margin-left: #{$size}#{$unit};
+      }
+    }
+    &-mb {
+      @include mobile-down {
+        margin-left: #{$size}#{$unit};
+      }
+    }
+  }
+}
+
+/* Container */
+.flex {
+  display: flex;
+}
+
+/* Align Items */
+.items_start {
+  align-items: flex-start;
+}
+.items_end {
+  align-items: flex-end;
+}
+.items_center {
+  align-items: center;
+}
+.items_baseline {
+  align-items: baseline;
+}
+.items_stretch {
+  align-items: stretch;
+}
+
+/* Align Content */
+.content_start {
+  align-content: flex-start;
+}
+.content-end {
+  align-content: flex-end;
+}
+.content_center {
+  align-content: center;
+}
+.content_between {
+  align-content: space-between;
+}
+.content_around {
+  align-content: space-around;
+}
+.content_evenly {
+  align-content: space-evenly;
+}
+
+/* Justify Content */
+.justify_start {
+  justify-content: flex-start;
+}
+.justify_end {
+  justify-content: flex-end;
+}
+.justify_center {
+  justify-content: center;
+}
+.justify_between {
+  justify-content: space-between;
+}
+.justify_around {
+  justify-content: space-around;
+}
+.justify_evenly {
+  justify-content: space-evenly;
+}

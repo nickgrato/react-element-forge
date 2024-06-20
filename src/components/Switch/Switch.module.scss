@@ -1,0 +1,108 @@
+@use '../../styles/core/boilerplate.scss'as *;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    .handle_shadow {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .track_on {
+      background: $color-semantic-success-hover;
+    }
+
+    .track_off {
+      background: $color-semantic-neutral-hover;
+    }
+  }
+
+  button {
+    border: 0px;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+  }
+
+  button.disabled {
+    cursor: not-allowed;
+  }
+
+  label {
+    @include body-md();
+    color: $color-text-main;
+    line-height: 24px;
+    font-weight: var(--switch-font-weight);
+    margin-left: 12px;
+  }
+}
+
+@mixin track {
+  height: 28px;
+  width: 58px;
+  border-radius: 14px;
+  transition: 500ms background ease-in-out;
+  padding: 0 3px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  &_on {
+    @include track;
+    background: $color-semantic-success;
+  }
+
+  &_off {
+    @include track;
+    background: $color-semantic-neutral; // need to add this to theme.
+  }
+}
+
+@mixin handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+  border-radius: 40px;
+  background: #ffffff;
+  transition: 500ms transform ease-in-out;
+}
+
+.handle {
+  &_on {
+    @include handle;
+    transform: translateX(120%);
+  }
+
+  &_off {
+    @include handle;
+    transform: translateX(-5%);
+  }
+
+  &_shadow {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    border-radius: 40px;
+    top: -5px;
+    left: -5px;
+    background: rgba(0, 0, 0, 0);
+    transition: 250ms background ease-in-out;
+  }
+}
+
+.icon {
+  &_on {
+    stroke: $color-semantic-success;
+    transition: 500ms stroke ease-in-out;
+  }
+
+  &_off {
+    stroke: #686868;
+    transition: 500ms stroke ease-in-out;
+  }
+}

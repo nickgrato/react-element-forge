@@ -1,0 +1,80 @@
+@use '../../styles/core/boilerplate.scss'as *;
+
+.select {
+  &_wrapper {
+    font-family: var(--font-primary);
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+
+    label {
+      font-size: var(--input-label-font-size);
+      color: var(--color-text-main);
+      line-height: 24px;
+      margin-bottom: 6px;
+      font-weight: var(--input-label-font-weight);
+
+      span {
+        color: var(--color-semantic-critical);
+      }
+    }
+
+    select {
+      font-size: var(--input-font-size);
+      color: var(--color-text-main);
+      border: var(--color-border-1) solid 2px;
+      border-radius: var(--input-border-radius);
+      padding: var(--input-padding);
+      background: transparent;
+      appearance: none;
+      background-color: transparent;
+      z-index: 1;
+
+      &.has_error {
+        border: var(--color-semantic-critical) solid 2px;
+      }
+
+      &.has_icon {
+        padding-right: 40px;
+      }
+    }
+  }
+
+  &_container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    background-color: var(--color-neutral-0);
+    flex-direction: column;
+    border-radius: 12px;
+  }
+
+  &_error {
+    select {
+      border: var(--color-semantic-critical) solid 1px;
+    }
+  }
+}
+
+.arrow {
+  position: absolute;
+  right: 14px;
+  top: 13px;
+  stroke: var(--color-interactions-menu);
+}
+
+.error_message {
+  font-size: var(--input-info-font-size);
+  color: var(--color-semantic-critical);
+  margin-top: 6px;
+  line-height: 24px;
+}
+
+.info {
+  font-size: var(--input-info-font-size);
+  margin-top: 6px;
+  color: var(--color-text-subtle);
+  line-height: 24px;
+}

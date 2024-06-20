@@ -1,0 +1,24 @@
+@use '../../styles/core/boilerplate.scss'as *;
+
+.dropdown_wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.content_wrapper {
+  border-radius: var(--dropdown-border-radius);
+  z-index: 1;
+  background-color: var(--color-background-neutral-0);
+  box-shadow: var(--drop-shadow);
+  margin-top: var(--dropdown-margin-top);
+}
+
+.left {
+  position: absolute;
+  left: 0;
+}
+
+.right {
+  position: absolute;
+  right: 0;
+}

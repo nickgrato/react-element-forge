@@ -1,0 +1,84 @@
+@use '../../styles/core/boilerplate.scss'as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.description {
+  font-family: var(--font-primary);
+  font-size: var(--tooltip-font-size);
+  font-weight: var(--tooltip-font-weight);
+  letter-spacing: 0;
+  line-height: 25px;
+  display: block;
+  z-index: 2;
+  padding: 10px;
+  min-width: var(--tooltip-width);
+  max-width: var(--tooltip-width);
+  width: var(--tooltip-width);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: $drop-shadow;
+}
+
+.container {
+  position: absolute;
+  z-index: 2;
+}
+
+/*-------------------------------
+  TOOL TIP LOCATIONS
+-------------------------------*/
+.right {
+  right: 0px;
+  transform: translate(100%);
+  padding-left: 12px;
+  p {
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+}
+
+.left {
+  left: 0px;
+  transform: translate(-100%);
+  padding-right: 12px;
+
+  p {
+    margin-top: 0px;
+    margin-right: 10px;
+  }
+}
+
+.top {
+  left: 0px;
+  top: 0px;
+  transform: translate(0, -100%);
+  padding-bottom: 12px;
+}
+
+.bottom {
+  left: 0px;
+  bottom: 0px;
+  transform: translate(0, 100%);
+  padding-top: 12px;
+}
+
+/*-------------------------------
+  TOOL TIP CATEGORIES
+-------------------------------*/
+.primary {
+  background-color: $color-interactions-menu;
+  color: $color-text-reverse;
+}
+
+.secondary {
+  background-color: $color-interaction-primary;
+  color: $color-text-reverse;
+}
+
+.tertiary {
+  background-color: $color-background-neutral-0;
+  color: $color-text-main;
+}

@@ -1,0 +1,99 @@
+@use '../../styles/core/boilerplate.scss'as *;
+
+.input {
+  &_wrapper {
+    font-family: var(--font-primary);
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+      font-size: var(--input-label-font-size);
+      color: var(--color-text-main);
+      line-height: 24px;
+      margin-bottom: 6px;
+      font-weight: var(--input-label-font-weight);
+
+      span {
+        color: var(--color-semantic-critical);
+      }
+    }
+  }
+
+  &_container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    input {
+      font-size: var(--input-font-size);
+      color: var(--color-text-main);
+      border: var(--color-border-1) solid 2px;
+      border-radius: var(--input-border-radius);
+      padding: var(--input-padding);
+      font-family: inherit;
+      background-color: var(--color-background-neutral-0);
+
+      &.has_error {
+        border: var(--color-semantic-critical) solid 2px;
+      }
+
+      &.has_icon {
+        padding-right: 40px;
+      }
+    }
+  }
+
+  &_error {
+    input {
+      border: var(--color-semantic-critical) solid 1px;
+    }
+  }
+}
+
+.tool_tip {
+  margin-left: 10px;
+  svg {
+    stroke: var(--color-interactions-menu);
+  }
+}
+
+.label {
+  display: flex;
+}
+
+.error_message {
+  font-size: var(--input-info-font-size);
+  color: var(--color-semantic-critical);
+  margin-top: 6px;
+  line-height: 24px;
+}
+
+.info {
+  font-size: var(--input-info-font-size);
+  margin-top: 6px;
+  color: var(--color-text-subtle);
+  line-height: 24px;
+}
+
+@mixin icon() {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+}
+
+.icon_success {
+  @include icon();
+  stroke: var(--color-semantic-success);
+}
+
+.icon_error {
+  @include icon();
+  stroke: var(--color-semantic-critical);
+}
+
+.icon_default {
+  @include icon();
+  stroke: var(--color-text-info);
+}

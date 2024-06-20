@@ -1,0 +1,24 @@
+@use '../../styles/core/boilerplate.scss'as *;
+
+.badge {
+  &_primary,
+  &_secondary {
+    font-family: var(--font-primary);
+    font-size: var(--badge-font-size);
+    font-weight: var(--badge-font-size);
+    line-height: var(--badge-line-height);
+    padding: var(--badge-padding);
+    border-radius: var(--badge-border-radius);
+    letter-spacing: 0.5px;
+  }
+
+  &_primary {
+    background-color: var(--color-badge-primary-bg);
+    color: var(--color-badge-primary-text);
+  }
+
+  &_secondary {
+    background-color: var(--color-badge-secondary-bg);
+    color: var(--color-badge-secondary-text);
+  }
+}
