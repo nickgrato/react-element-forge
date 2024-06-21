@@ -18,5 +18,6 @@ export const Primary: Story = {
     type: 'text',
     info: 'Additional Input Information',
     required: true,
+    autoComplete: 'off',
   },
 };

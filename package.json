@@ -1,20 +1,21 @@
 {
   "name": "react-element-forge",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.6",
   "description": "React Component Library",
-  "main": "dist/element-forge.es.js",
-  "module": "dist/element-forge.es.js",
   "files": [
     "dist"
   ],
+  "main": "dist/react-element-forge.umd.js",
+  "module": "dist/react-element-forge.es.js",
+  "types": "dist/types/components/index.d.ts",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
+    "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
@@ -46,5 +47,6 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.9.1"
-  }
+  },
+  "author": "Nick Grato"
 }

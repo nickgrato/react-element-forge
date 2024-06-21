@@ -62,11 +62,9 @@ const Switch = forwardRef(
 
     const handleSwitchClick = () => {
       if (disabled) return;
-      setIsOn((state) => {
-        onChange(!state);
+      onChange(!isOn);
 
-        return !state;
-      });
+      setIsOn((prevIsOn) => !prevIsOn);
     };
 
     return (

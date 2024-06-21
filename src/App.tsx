@@ -1,6 +1,7 @@
-import { useState } from "react";
-import "./App.scss";
-import Button from "./components/Button";
+import { useState } from 'react';
+import './App.scss';
+import { Button } from 'react-element-forge';
+// import { Button, IcontT } from '../dist/react-element-forge.es.js';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ function App() {
         </p>
       </div>
       <Button text="tester" category="primary_solid" />
+      <Button text="tester" category="secondary_outline" />
     </>
   );
 }

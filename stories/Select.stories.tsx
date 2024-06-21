@@ -13,14 +13,14 @@ type Story = StoryObj<typeof Component>;
 
 export const Primary: Story = {
   args: {
-    label: 'Select an Option',
+    label: 'Select your option',
     name: 'option',
     info: 'Additional Input Information',
     required: true,
     options: [
-      { value: '1', label: 'Option 1' },
-      { value: '2', label: 'Option 2' },
-      { value: '3', label: 'Option 3' },
+      { value: '1', label: 'Jetpack' },
+      { value: '2', label: 'Nun Chucks' },
+      { value: '3', label: 'Hover Board' },
     ],
   },
 };

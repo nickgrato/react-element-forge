@@ -1,30 +1,58 @@
-# React + TypeScript + Vite
+# React Element Forge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React Component Library
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**npm:**
 
-- Configure the top-level `parserOptions` property like this:
+```sh
+npm i react-element-forge
+```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+**yarn:**
+
+```sh
+yarn add react-element-forge
+```
+
+## Getting started 
+
+Here is an example of a basic app using Element Forge's `Button` component:
+
+```jsx
+import * as React from 'react';
+import { Button } from 'react-element-forge';
+
+function App() {
+  return (
+    <Button category="primary_solid" icon="alert-circle" text="click me!!" />
+  );
 }
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Adding Styles
+
+If you using NextJs it's better to import styles into a javascript file in the root of the project. However if you need to import the CSS
+into a style sheet that will work as well.
+
+```js
+import 'react-element-forge/dist/style.css'
+```
+
+```jsx
+  // Set to Light Theme,
+  // Note: if a "data-theme" is not set on <main> it will default the "light" theme
+ <main data-theme="light"></main>
+
+ // Set to Dark Theme
+ <main data-theme="dark"></main>
+
+ // Get theme from users settings "dark" or "light"
+ <main data-theme={themeFromUserSettings}></main>
+```
+
+ 
+ 

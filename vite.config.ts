@@ -1,14 +1,15 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import * as path from "path";
-import dts from "vite-plugin-dts";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import * as path from 'path';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   plugins: [
     react(),
     dts({
       // Configuration options for dts plugin
-      exclude: ["src/App.tsx", "**/*.stories.tsx", "**/*.test.tsx"],
+      exclude: ['src/App.tsx', '**/*.stories.tsx', '**/*.test.tsx'],
+      outDir: 'dist/types',
     }),
   ],
   css: {
@@ -20,20 +21,20 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/components/index.ts"),
-      name: "MyUILibrary",
+      entry: path.resolve(__dirname, 'src/components/index.ts'),
+      name: 'react-element-forge',
       fileName: (format) => `react-element-forge.${format}.js`,
     },
     rollupOptions: {
       // Ensure external dependencies are not bundled into the library
-      external: ["react", "react-dom"],
+      external: ['react', 'react-dom'],
       output: {
         globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
+          react: 'React',
+          'react-dom': 'ReactDOM',
         },
       },
     },
-    minify: "esbuild", // Ensure minification is enabled
+    minify: 'esbuild', // Ensure minification is enabled
   },
 });

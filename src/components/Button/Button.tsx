@@ -1,22 +1,23 @@
-import { MouseEventHandler } from "react";
-import styles from "./Button.module.scss";
-import Icon, { IconT } from "../Icon/Icon";
+import { MouseEventHandler } from 'react';
+import styles from './Button.module.scss';
+import Icon, { IconT } from '../Icon/Icon';
+import React from 'react';
 
-export type ButtonT = "button" | "submit" | "reset";
+export type ButtonT = 'button' | 'submit' | 'reset';
 
 /**
  * type is formatted in snake_case so that we can use the mapped
  * value as a SCSS value.
  */
 export type ButtonCategoriesT =
-  | "primary_solid"
-  | "primary_outline"
-  | "primary_clear"
-  | "secondary_solid"
-  | "secondary_outline"
-  | "secondary_clear";
+  | 'primary_solid'
+  | 'primary_outline'
+  | 'primary_clear'
+  | 'secondary_solid'
+  | 'secondary_outline'
+  | 'secondary_clear';
 
-export type ButtonSizesT = "small" | "medium" | "large";
+export type ButtonSizesT = 'small' | 'medium' | 'large';
 
 export type LinkComponentT = React.ComponentType<{
   href: string;
@@ -50,14 +51,14 @@ type ButtonIconT = {
   icon?: IconT;
   customIcon?: React.ReactNode;
   hasText: boolean;
-  position: "left" | "right";
+  position: 'left' | 'right';
 };
 
 const ButtonIcon = ({
   icon,
   customIcon,
   hasText,
-  position = "left",
+  position = 'left',
 }: ButtonIconT) => {
   if (customIcon) return <>{customIcon}</>;
 
@@ -70,7 +71,7 @@ const ButtonIcon = ({
       name={icon}
       color="currentColor"
       size={22}
-      className={hasText ? styles[position] : ""}
+      className={hasText ? styles[position] : ''}
     />
   );
 };
@@ -80,17 +81,17 @@ const Button = ({
   id,
   text,
   label,
-  type = "button",
-  category = "primary_solid",
-  size = "medium",
+  type = 'button',
+  category = 'primary_solid',
+  size = 'medium',
   disabled,
   icon,
   customIcon,
   onClick,
   iconPlacedRight = false,
   href,
-  target = "_self",
-  className = "",
+  target = '_self',
+  className = '',
   LinkComponent,
 }: ButtonPropsT) => {
   const content = (
@@ -122,11 +123,11 @@ const Button = ({
    * Configure CSS Class
    */
   const buttonStyle = `
-    ${styles["button_" + category]} 
+    ${styles['button_' + category]} 
     ${styles[size]} 
-    ${!text && styles[size + "_round"]} 
+    ${!text && styles[size + '_round']} 
     ${className} 
-    ${active && styles["button_" + category + "_active"]}
+    ${active && styles['button_' + category + '_active']}
   `;
 
   if (href && LinkComponent) {
