@@ -1,7 +1,6 @@
 import { MouseEventHandler } from 'react';
 import styles from './Button.module.scss';
 import Icon, { IconT } from '../Icon/Icon';
-import React from 'react';
 
 export type ButtonT = 'button' | 'submit' | 'reset';
 

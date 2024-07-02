@@ -1,4 +1,4 @@
-@use "./tools/media-queries.scss" as *;
+@use './tools/media-queries.scss' as *;
 
 // ---------------------------------
 //  Layout
@@ -7,8 +7,8 @@
 // Create Size Value Array
 $start: 0;
 $end: 40;
-$array: "";
-$unit: "px";
+$array: '';
+$unit: 'px';
 
 @for $i from $start + 1 through $end {
   $array: append($array, $i, comma);
@@ -252,59 +252,64 @@ $unit: "px";
   display: flex;
 }
 
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /* Align Items */
-.items_start {
+.items-start {
   align-items: flex-start;
 }
-.items_end {
+.items-end {
   align-items: flex-end;
 }
-.items_center {
+.items-center {
   align-items: center;
 }
-.items_baseline {
+.items-baseline {
   align-items: baseline;
 }
-.items_stretch {
+.items-stretch {
   align-items: stretch;
 }
 
 /* Align Content */
-.content_start {
+.content-start {
   align-content: flex-start;
 }
 .content-end {
   align-content: flex-end;
 }
-.content_center {
+.content-center {
   align-content: center;
 }
-.content_between {
+.content-between {
   align-content: space-between;
 }
-.content_around {
+.content-around {
   align-content: space-around;
 }
-.content_evenly {
+.content-evenly {
   align-content: space-evenly;
 }
 
 /* Justify Content */
-.justify_start {
+.justify-start {
   justify-content: flex-start;
 }
-.justify_end {
+.justify-end {
   justify-content: flex-end;
 }
-.justify_center {
+.justify-center {
   justify-content: center;
 }
-.justify_between {
+.justify-between {
   justify-content: space-between;
 }
-.justify_around {
+.justify-around {
   justify-content: space-around;
 }
-.justify_evenly {
+.justify-evenly {
   justify-content: space-evenly;
 }

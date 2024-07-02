@@ -12,10 +12,6 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-// const Template = (props: any) => {
-//   return <Component {...props} />;
-// };
-
 const radioFormOptions = [
   {
     label: 'Spaceship',
