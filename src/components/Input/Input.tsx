@@ -57,7 +57,7 @@ const Input = forwardRef((props: InputPropsI, ref) => {
     showRequired = true,
     isError = false,
     customErrorMessage = '',
-    pattern = '',
+    pattern = '.*',
     value,
     icon,
     iconColor = 'default',
@@ -92,7 +92,7 @@ const Input = forwardRef((props: InputPropsI, ref) => {
   useEffect(() => {
     const input = inputRef.current;
     if (!input) return;
-
+    console.log('input', input);
     const valid = input.validity.valid;
     const validationMessage = input.validationMessage;
     const validation = valid && validator(value);

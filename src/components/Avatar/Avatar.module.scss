@@ -1,4 +1,4 @@
-@use '../../styles/core/boilerplate.scss'as *;
+@use '../../styles/core/boilerplate.scss' as *;
 
 .avatar {
   position: relative;
@@ -9,7 +9,7 @@
   border-radius: 50%;
   overflow: hidden;
   user-select: none;
-  background-color: $color-background-subtle-callout;
+  background-color: $color-avatar-bg;
 
   img {
     width: 100%;

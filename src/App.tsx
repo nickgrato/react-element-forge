@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
-import { Button } from 'react-element-forge';
-// import { Button, IcontT } from '../dist/react-element-forge.es.js';
-
+import Button from './components/Button';
 function App() {
   const [count, setCount] = useState(0);
 

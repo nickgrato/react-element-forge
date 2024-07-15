@@ -13,6 +13,11 @@
   --font-secondary-weight: 700;
 
   /**
+  AVATAR
+  **/
+  --color-avatar-bg: #e8effd;
+
+  /**
   BUTTON
   **/
   --button-font-size: 1rem;
@@ -20,11 +25,11 @@
   --button-border-radius: 12px;
   --button-border-stroke: 2px;
   --button-padding-large: 12px 18px;
-  --button-padding-large-round: 12px;
+  --button-padding-large-round: 18px;
   --button-padding-medium: 4px 8px;
-  --button-padding-medium-round: 4px;
+  --button-padding-medium-round: 8px;
   --button-padding-small: 3px 6px;
-  --button-padding-small-round: 3px;
+  --button-padding-small-round: 6px;
 
   /**
   COPY BUTTON
@@ -103,6 +108,28 @@
   --color-interaction-secondary-alt-hover: #e8e8e8;
   --color-interaction-secondary-alt-active: #d9d9d9;
   --color-interaction-secondary-alt-disabled: #e7e7e7;
+
+  /**
+  DELETE INTERACTION
+  **/
+  --color-interaction-delete: #e32727;
+  --color-interaction-delete-alt: #ffffff;
+  --color-interaction-delete-hover: #db4d4d;
+  --color-interaction-delete-active: #db4d4d;
+  --color-interaction-delete-disabled: #666;
+  --color-interaction-delete-alt-disabled: #777;
+
+  /**
+  ALT INTERACTION
+  **/
+  --color-interaction-alt: #027640;
+  --color-interaction-alt-hover: #055133;
+  --color-interaction-alt-active: #06964e;
+  --color-interaction-alt-disabled: rgba(176, 176, 176, 0.5);
+  --color-interaction-alt-alt: #ffffff;
+  --color-interaction-alt-alt-hover: #e8effd;
+  --color-interaction-alt-alt-active: #cbd8f0;
+  --color-interaction-alt-alt-disabled: #e7e7e7;
 
   /**
   SEMANTIC

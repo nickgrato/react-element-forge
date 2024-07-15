@@ -50,6 +50,30 @@ $color-interaction-secondary-alt-disabled: var(
 );
 
 /**
+  DELETE INTERACTION
+  **/
+$color-interaction-delete: var(--color-interaction-delete);
+$color-interaction-delete-hover: var(--color-interaction-delete-hover);
+$color-interaction-delete-active: var(--color-interaction-delete-active);
+$color-interaction-delete-disabled: var(--color-interaction-delete-disabled);
+$color-interaction-delete-alt-disabled: var(
+  --color-interaction-delete-alt-disabled
+);
+$color-interaction-delete-alt: var(--color-interaction-delete-alt);
+
+/**
+  ALT INTERACTION
+  **/
+$color-interaction-alt: var(--color-interaction-alt);
+$color-interaction-alt-hover: var(--color-interaction-alt-hover);
+$color-interaction-alt-active: var(--color-interaction-alt-active);
+$color-interaction-alt-disabled: var(--color-interaction-alt-disabled);
+$color-interaction-alt-alt: var(--color-interaction-alt-alt);
+$color-interaction-alt-alt-hover: var(--color-interaction-alt-alt-hover);
+$color-interaction-alt-alt-active: var(--color-interaction-alt-alt-active);
+$color-interaction-alt-alt-disabled: var(--color-interaction-alt-alt-disabled);
+
+/**
   SEMANTIC
   **/
 $color-semantic-info: var(--color-semantic-info);
@@ -171,3 +195,8 @@ Dropdown
 **/
 $dropdown-margin-top: var(--dropdown-margin-top);
 $dropdown-border-radius: var(--dropdown-border-radius);
+
+/**
+Avatar
+**/
+$color-avatar-bg: var(--color-avatar-bg);
