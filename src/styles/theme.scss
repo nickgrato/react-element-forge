@@ -112,24 +112,24 @@
   /**
   DELETE INTERACTION
   **/
-  --color-interaction-delete: #e32727;
-  --color-interaction-delete-alt: #ffffff;
-  --color-interaction-delete-hover: #db4d4d;
-  --color-interaction-delete-active: #db4d4d;
-  --color-interaction-delete-disabled: #666;
-  --color-interaction-delete-alt-disabled: #777;
+  --color-interaction-delete: var(--color-semantic-critical);
+  --color-interaction-delete-alt:  var(--color-semantic-critical-bg-alt);
+  --color-interaction-delete-hover:  var(--color-semantic-critical-hover);
+  --color-interaction-delete-active:  var(--color-semantic-critical-active);
+  --color-interaction-delete-disabled:  var(--color-semantic-critical-disabled);
+  --color-interaction-delete-alt-disabled:  var(--color-semantic-critical-disabled);
 
   /**
   ALT INTERACTION
   **/
-  --color-interaction-alt: #027640;
-  --color-interaction-alt-hover: #055133;
-  --color-interaction-alt-active: #06964e;
-  --color-interaction-alt-disabled: rgba(176, 176, 176, 0.5);
-  --color-interaction-alt-alt: #ffffff;
-  --color-interaction-alt-alt-hover: #e8effd;
-  --color-interaction-alt-alt-active: #cbd8f0;
-  --color-interaction-alt-alt-disabled: #e7e7e7;
+  --color-interaction-pos: var(--color-semantic-success);
+  --color-interaction-pos-hover: var(--color-semantic-success-hover);
+  --color-interaction-pos-active: var(--color-semantic-success-active);
+  --color-interaction-pos-disabled: var(--color-semantic-success-disabled);
+  --color-interaction-pos-alt: var(--color-semantic-success);
+  --color-interaction-pos-alt-hover: var(--color-semantic-success-hover);
+  --color-interaction-pos-alt-active:  var(--color-semantic-success-disabled);
+  --color-interaction-pos-alt-disabled:  var(--color-semantic-success-disabled);
 
   /**
   SEMANTIC

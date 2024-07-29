@@ -50,28 +50,26 @@ $color-interaction-secondary-alt-disabled: var(
 );
 
 /**
-  DELETE INTERACTION
-  **/
-$color-interaction-delete: var(--color-interaction-delete);
-$color-interaction-delete-hover: var(--color-interaction-delete-hover);
-$color-interaction-delete-active: var(--color-interaction-delete-active);
-$color-interaction-delete-disabled: var(--color-interaction-delete-disabled);
-$color-interaction-delete-alt-disabled: var(
-  --color-interaction-delete-alt-disabled
-);
-$color-interaction-delete-alt: var(--color-interaction-delete-alt);
+DELETE INTERACTION
+**/
+$color-interaction-delete: var(--color-semantic-critical);
+$color-interaction-delete-alt: var(--color-semantic-critical-bg-alt);
+$color-interaction-delete-hover: var(--color-semantic-critical-hover);
+$color-interaction-delete-active: var(--color-semantic-critical-active);
+$color-interaction-delete-disabled: var(--color-semantic-critical-disabled);
+$color-interaction-delete-alt-disabled: var(--color-semantic-critical-disabled);
 
 /**
-  ALT INTERACTION
-  **/
-$color-interaction-alt: var(--color-interaction-alt);
-$color-interaction-alt-hover: var(--color-interaction-alt-hover);
-$color-interaction-alt-active: var(--color-interaction-alt-active);
-$color-interaction-alt-disabled: var(--color-interaction-alt-disabled);
-$color-interaction-alt-alt: var(--color-interaction-alt-alt);
-$color-interaction-alt-alt-hover: var(--color-interaction-alt-alt-hover);
-$color-interaction-alt-alt-active: var(--color-interaction-alt-alt-active);
-$color-interaction-alt-alt-disabled: var(--color-interaction-alt-alt-disabled);
+ALT INTERACTION
+**/
+$color-interaction-pos: var(--color-semantic-success);
+$color-interaction-pos-hover: var(--color-semantic-success-hover);
+$color-interaction-pos-active: var(--color-semantic-success-active);
+$color-interaction-pos-disabled: var(--color-semantic-success-disabled);
+$color-interaction-pos-alt: var(--color-semantic-success);
+$color-interaction-pos-alt-hover: var(--color-semantic-success-hover);
+$color-interaction-pos-alt-active: var(--color-semantic-success-disabled);
+$color-interaction-pos-alt-disabled: var(--color-semantic-success-disabled);
 
 /**
   SEMANTIC
