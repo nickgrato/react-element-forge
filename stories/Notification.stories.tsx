@@ -1,35 +1,35 @@
-import { type Meta, StoryObj } from '@storybook/react';
+import { type Meta, StoryObj } from '@storybook/react'
 import Component, {
   NotificationInterfaceT,
   NewNotificationT,
-} from '../src/components/Notification';
+} from '../src/components/Notification'
 
-import Button from '../src/components/Button';
-import { useRef } from 'react';
-import '../src/styles/theme.scss';
+import Button from '../src/components/Button'
+import { useRef } from 'react'
+import '../src/styles/theme.scss'
 
 const meta: Meta<typeof Component> = {
   title: 'Example/Notification',
   component: Component,
   argTypes: {},
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<NewNotificationT>;
+type Story = StoryObj<NewNotificationT>
 
 const Template = (args: any) => {
-  const notificationRef = useRef<NotificationInterfaceT>();
-  const callback = args.callbackCta ? () => {} : undefined;
+  const notificationRef = useRef<NotificationInterfaceT>()
+  // const callback = args.callbackCta ? () => {} : undefined;
 
   const success: NewNotificationT = {
     ...args,
-  };
+  }
 
   const handleClick = () => {
-    console.log('notificationRef', notificationRef.current);
-    notificationRef.current?.dispatchNotification(success);
-  };
+    console.log('notificationRef', notificationRef.current)
+    notificationRef.current?.dispatchNotification(success)
+  }
 
   return (
     <div>
@@ -40,8 +40,8 @@ const Template = (args: any) => {
       />
       <Component ref={notificationRef} />
     </div>
-  );
-};
+  )
+}
 
 export const Primary: Story = {
   render: (args) => <Template {...args} />,
@@ -57,4 +57,4 @@ export const Primary: Story = {
     callbackCta: '',
     category: 'toast',
   },
-};
+}

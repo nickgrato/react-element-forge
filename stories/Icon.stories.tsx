@@ -1,14 +1,14 @@
-import { type Meta, StoryObj } from '@storybook/react';
-import Component, { IconT } from '../src/components/Icon';
-import '../src/styles/theme.scss';
-import styles from './Icon.module.scss';
+import { type Meta, StoryObj } from '@storybook/react'
+import Component, { IconT } from '../src/components/Icon'
+import '../src/styles/theme.scss'
+// import styles from './Icon.module.scss';
 
 const meta: Meta<typeof Component> = {
   title: 'Example/Icon',
   component: Component,
-};
+}
 
-export default meta;
+export default meta
 
 const iconArray: IconT[] = [
   'activity',
@@ -302,9 +302,9 @@ const iconArray: IconT[] = [
   'zap',
   'zoom-in',
   'zoom-out',
-];
+]
 
-type Story = StoryObj<typeof Component>;
+type Story = StoryObj<typeof Component>
 
 const Template = (props: any) => {
   return (
@@ -317,14 +317,14 @@ const Template = (props: any) => {
               <Component name={icon} {...props} />
               <p className="body-sm">{icon}</p>
             </div>
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const Primary: Story = {
   render: (args) => <Template {...args} />,
   args: {},
-};
+}
