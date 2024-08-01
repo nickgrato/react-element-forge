@@ -17,7 +17,7 @@ export type ButtonCategoriesT =
   | 'secondary_clear'
 
 export type ButtonVariantT = 'solid' | 'outline' | 'clear'
-export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'alt'
+export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'pos'
 export type ButtonSizesT = 'small' | 'medium' | 'large'
 
 export type LinkComponentT = React.ComponentType<{
@@ -127,7 +127,7 @@ const ActionButton = ({
    * Configure CSS Class
    */
   const buttonStyle = `
-    ${styles['button_' + color + '_' + variant]} 
+    ${styles['button_' + color + '_' + variant]}
     ${styles[size]} 
     ${!text && styles[size + '_round']} 
     ${className} 

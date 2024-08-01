@@ -122,16 +122,19 @@
   background-color: $color-interaction-secondary;
   border: solid $button-border-stroke $color-interaction-secondary;
   color: $color-interaction-primary;
+  box-shadow: 0;
 
   &:hover {
     background-color: $color-interaction-secondary-hover;
     border: solid $button-border-stroke $color-interaction-secondary-hover;
+    box-shadow: 0;
   }
 
   &_active,
   &:focus {
     border: solid $button-border-stroke $color-interaction-secondary-active;
     background-color: $color-interaction-secondary-active;
+    box-shadow: 0;
   }
 
   &:disabled,
@@ -139,6 +142,7 @@
     background-color: $color-interaction-secondary-disabled;
     border: solid $button-border-stroke $color-interaction-secondary-disabled;
     color: $color-text-disabled;
+    box-shadow: 0;
   }
 }
 
@@ -166,6 +170,31 @@
   &[disabled] {
     background-color: transparent;
     border: solid $button-border-stroke $color-interaction-secondary-disabled;
+    color: $color-text-disabled;
+  }
+}
+
+/*-------------------------------
+  CLEAR BUTTON
+-------------------------------*/
+.button_secondary_clear {
+  @include rect_button_base();
+  background-color: transparent;
+  border: solid $button-border-stroke transparent;
+  color: $color-interaction-secondary;
+  box-shadow: none;
+
+  &:hover {
+    color: $color-interaction-secondary-hover;
+  }
+
+  &_active,
+  &:focus {
+    color: $color-interaction-secondary-active;
+  }
+
+  &:disabled,
+  &[disabled] {
     color: $color-text-disabled;
   }
 }
@@ -256,33 +285,33 @@
 }
 
 /******************************
-      ALT BUTTONS
+      POS BUTTONS
 ******************************/
 
 /*-------------------------------
   SOLID BUTTON 
 -------------------------------*/
-.button_alt_solid {
+.button_pos_solid {
   @include rect_button_base();
-  background-color: $color-interaction-alt;
-  border: solid $button-border-stroke $color-interaction-alt;
-  color: $color-interaction-alt-alt;
+  background-color: $color-interaction-pos;
+  border: solid $button-border-stroke $color-interaction-pos;
+  color: $color-interaction-pos-alt;
 
   &:hover {
-    background-color: $color-interaction-alt-hover;
-    border: solid $button-border-stroke $color-interaction-alt-hover;
+    background-color: $color-interaction-pos-hover;
+    border: solid $button-border-stroke $color-interaction-pos-hover;
   }
 
   &_active,
   &:focus {
-    border: solid $button-border-stroke $color-interaction-alt-active;
-    background-color: $color-interaction-alt-active;
+    border: solid $button-border-stroke $color-interaction-pos-active;
+    background-color: $color-interaction-pos-active;
   }
 
   &:disabled,
   &[disabled] {
-    background-color: $color-interaction-alt-disabled;
-    border: solid $button-border-stroke $color-interaction-alt-disabled;
+    background-color: $color-interaction-pos-disabled;
+    border: solid $button-border-stroke $color-interaction-pos;
     color: $color-text-disabled;
   }
 }
@@ -290,27 +319,27 @@
 /*-------------------------------
   OUTLINE BUTTON
 -------------------------------*/
-.button_alt_outline {
+.button_pos_outline {
   @include rect_button_base();
   background-color: transparent;
-  border: solid $button-border-stroke $color-interaction-alt;
-  color: $color-interaction-alt;
+  border: solid $button-border-stroke $color-interaction-pos;
+  color: $color-interaction-pos;
 
   &:hover {
-    border: solid $button-border-stroke $color-interaction-alt-hover;
-    color: $color-interaction-alt-hover;
+    border: solid $button-border-stroke $color-interaction-pos-hover;
+    color: $color-interaction-pos-hover;
   }
 
   &_active,
   &:focus {
-    border: solid $button-border-stroke $color-interaction-alt-active;
-    color: $color-interaction-alt-hover;
+    border: solid $button-border-stroke $color-interaction-pos-active;
+    color: $color-interaction-pos-hover;
   }
 
   &:disabled,
   &[disabled] {
     background-color: transparent;
-    border: solid $button-border-stroke $color-interaction-alt-disabled;
+    border: solid $button-border-stroke $color-interaction-pos;
     color: $color-text-disabled;
   }
 }
@@ -318,20 +347,20 @@
 /*-------------------------------
   CLEAR BUTTON
 -------------------------------*/
-.button_alt_clear {
+.button_pos_clear {
   @include rect_button_base();
   background-color: transparent;
   border: solid $button-border-stroke transparent;
-  color: $color-interaction-alt;
+  color: $color-interaction-pos;
   box-shadow: none;
 
   &:hover {
-    color: $color-interaction-alt-hover;
+    color: $color-interaction-pos-hover;
   }
 
   &_active,
   &:focus {
-    color: $color-interaction-alt-hover;
+    color: $color-interaction-pos-hover;
   }
 
   &:disabled,
