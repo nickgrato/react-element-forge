@@ -1,4 +1,4 @@
-@use "../../styles/core/boilerplate.scss" as *;
+@use '../../styles/core/boilerplate.scss' as *;
 
 @mixin rect_button_base() {
   font-family: var(--font-primary);
@@ -187,6 +187,176 @@
   &_active,
   &:focus {
     color: $color-interaction-secondary-hover;
+  }
+
+  &:disabled,
+  &[disabled] {
+    color: $color-text-disabled;
+  }
+}
+
+/******************************
+      DELETE BUTTONS
+******************************/
+
+/*-------------------------------
+  SOLID BUTTON 
+-------------------------------*/
+.button_delete_solid {
+  @include rect_button_base();
+  background-color: $color-interaction-delete;
+  border: solid $button-border-stroke $color-interaction-delete;
+  color: $color-interaction-delete-alt;
+
+  &:hover {
+    background-color: $color-interaction-delete-hover;
+    border: solid $button-border-stroke $color-interaction-delete-hover;
+  }
+
+  &_active,
+  &:focus {
+    border: solid $button-border-stroke $color-interaction-delete-active;
+    background-color: $color-interaction-delete-active;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: $color-interaction-delete-disabled;
+    border: solid $button-border-stroke $color-interaction-delete-disabled;
+    color: $color-text-disabled;
+  }
+}
+
+/*-------------------------------
+  OUTLINE BUTTON
+-------------------------------*/
+.button_delete_outline {
+  @include rect_button_base();
+  background-color: transparent;
+  border: solid $button-border-stroke $color-interaction-delete;
+  color: $color-interaction-delete;
+
+  &:hover {
+    border: solid $button-border-stroke $color-interaction-delete-hover;
+    color: $color-interaction-delete-hover;
+  }
+
+  &_active,
+  &:focus {
+    border: solid $button-border-stroke $color-interaction-delete-active;
+    color: $color-interaction-delete-hover;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: transparent;
+    border: solid $button-border-stroke $color-interaction-delete-disabled;
+    color: $color-text-disabled;
+  }
+}
+
+/*-------------------------------
+  CLEAR BUTTON
+-------------------------------*/
+.button_delete_clear {
+  @include rect_button_base();
+  background-color: transparent;
+  border: solid $button-border-stroke transparent;
+  color: $color-interaction-delete;
+  box-shadow: none;
+
+  &:hover {
+    color: $color-interaction-delete-hover;
+  }
+
+  &_active,
+  &:focus {
+    color: $color-interaction-delete-hover;
+  }
+
+  &:disabled,
+  &[disabled] {
+    color: $color-text-disabled;
+  }
+}
+
+/******************************
+      ALT BUTTONS
+******************************/
+
+/*-------------------------------
+  SOLID BUTTON 
+-------------------------------*/
+.button_alt_solid {
+  @include rect_button_base();
+  background-color: $color-interaction-alt;
+  border: solid $button-border-stroke $color-interaction-alt;
+  color: $color-interaction-alt-alt;
+
+  &:hover {
+    background-color: $color-interaction-alt-hover;
+    border: solid $button-border-stroke $color-interaction-alt-hover;
+  }
+
+  &_active,
+  &:focus {
+    border: solid $button-border-stroke $color-interaction-alt-active;
+    background-color: $color-interaction-alt-active;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: $color-interaction-alt-disabled;
+    border: solid $button-border-stroke $color-interaction-alt-disabled;
+    color: $color-text-disabled;
+  }
+}
+
+/*-------------------------------
+  OUTLINE BUTTON
+-------------------------------*/
+.button_alt_outline {
+  @include rect_button_base();
+  background-color: transparent;
+  border: solid $button-border-stroke $color-interaction-alt;
+  color: $color-interaction-alt;
+
+  &:hover {
+    border: solid $button-border-stroke $color-interaction-alt-hover;
+    color: $color-interaction-alt-hover;
+  }
+
+  &_active,
+  &:focus {
+    border: solid $button-border-stroke $color-interaction-alt-active;
+    color: $color-interaction-alt-hover;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: transparent;
+    border: solid $button-border-stroke $color-interaction-alt-disabled;
+    color: $color-text-disabled;
+  }
+}
+
+/*-------------------------------
+  CLEAR BUTTON
+-------------------------------*/
+.button_alt_clear {
+  @include rect_button_base();
+  background-color: transparent;
+  border: solid $button-border-stroke transparent;
+  color: $color-interaction-alt;
+  box-shadow: none;
+
+  &:hover {
+    color: $color-interaction-alt-hover;
+  }
+
+  &_active,
+  &:focus {
+    color: $color-interaction-alt-hover;
   }
 
   &:disabled,
