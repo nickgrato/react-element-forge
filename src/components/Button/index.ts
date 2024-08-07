@@ -5,4 +5,4 @@ export {
   type ButtonSizesT,
   type LinkComponentT,
   type ButtonPropsT,
-} from "./Button";
+} from './Button'

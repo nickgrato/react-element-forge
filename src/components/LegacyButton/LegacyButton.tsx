@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react'
-import styles from './ActionButton.module.scss'
+import styles from './Button.module.scss'
 import Icon, { IconT } from '../Icon/Icon'
 
 export type ButtonT = 'button' | 'submit' | 'reset'
@@ -16,8 +16,6 @@ export type ButtonCategoriesT =
   | 'secondary_outline'
   | 'secondary_clear'
 
-export type ButtonVariantT = 'solid' | 'outline' | 'clear'
-export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'pos'
 export type ButtonSizesT = 'small' | 'medium' | 'large'
 
 export type LinkComponentT = React.ComponentType<{
@@ -30,13 +28,12 @@ export type LinkComponentT = React.ComponentType<{
 }>
 
 export type ButtonPropsT = {
-  variant?: ButtonVariantT
   active?: boolean
   id?: string
   text?: string
   label?: string
   type?: ButtonT
-  color?: ButtonColorT
+  category?: ButtonCategoriesT
   size?: ButtonSizesT
   disabled?: boolean
   icon?: IconT
@@ -78,14 +75,13 @@ const ButtonIcon = ({
   )
 }
 
-const ActionButton = ({
-  variant = 'solid',
-  color = 'primary',
+const Button = ({
   active,
   id,
   text,
   label,
   type = 'button',
+  category = 'primary_solid',
   size = 'medium',
   disabled,
   icon,
@@ -97,7 +93,6 @@ const ActionButton = ({
   className = '',
   LinkComponent,
 }: ButtonPropsT) => {
-  console.log('variant', variant)
   const content = (
     <>
       {!iconPlacedRight && (
@@ -127,11 +122,11 @@ const ActionButton = ({
    * Configure CSS Class
    */
   const buttonStyle = `
-    ${styles['button_' + color + '_' + variant]} 
+    ${styles['button_' + category]} 
     ${styles[size]} 
     ${!text && styles[size + '_round']} 
     ${className} 
-    ${active && styles['button_' + color + '_' + variant + '_active']}
+    ${active && styles['button_' + category + '_active']}
   `
 
   if (href && LinkComponent) {
@@ -177,4 +172,4 @@ const ActionButton = ({
   )
 }
 
-export default ActionButton
+export default Button

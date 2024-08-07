@@ -1,8 +1,8 @@
-import { MouseEventHandler } from 'react';
-import styles from './Button.module.scss';
-import Icon, { IconT } from '../Icon/Icon';
+import { MouseEventHandler } from 'react'
+import styles from './Button.module.scss'
+import Icon, { IconT } from '../Icon/Icon'
 
-export type ButtonT = 'button' | 'submit' | 'reset';
+export type ButtonT = 'button' | 'submit' | 'reset'
 
 /**
  * type is formatted in snake_case so that we can use the mapped
@@ -14,44 +14,47 @@ export type ButtonCategoriesT =
   | 'primary_clear'
   | 'secondary_solid'
   | 'secondary_outline'
-  | 'secondary_clear';
+  | 'secondary_clear'
 
-export type ButtonSizesT = 'small' | 'medium' | 'large';
+export type ButtonVariantT = 'solid' | 'outline' | 'clear'
+export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'alt'
+export type ButtonSizesT = 'small' | 'medium' | 'large'
 
 export type LinkComponentT = React.ComponentType<{
-  href: string;
-  children: React.ReactNode;
-  className?: string;
-  id?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
-  target?: string;
-}>;
+  href: string
+  children: React.ReactNode
+  className?: string
+  id?: string
+  onClick?: MouseEventHandler<HTMLAnchorElement>
+  target?: string
+}>
 
 export type ButtonPropsT = {
-  active?: boolean;
-  id?: string;
-  text?: string;
-  label?: string;
-  type?: ButtonT;
-  category?: ButtonCategoriesT;
-  size?: ButtonSizesT;
-  disabled?: boolean;
-  icon?: IconT;
-  customIcon?: React.ReactNode;
-  iconPlacedRight?: boolean;
-  href?: string;
-  target?: string;
-  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-  className?: string;
-  LinkComponent?: LinkComponentT;
-};
+  variant?: ButtonVariantT
+  active?: boolean
+  id?: string
+  text?: string
+  label?: string
+  type?: ButtonT
+  color?: ButtonColorT
+  size?: ButtonSizesT
+  disabled?: boolean
+  icon?: IconT
+  customIcon?: React.ReactNode
+  iconPlacedRight?: boolean
+  href?: string
+  target?: string
+  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>
+  className?: string
+  LinkComponent?: LinkComponentT
+}
 
 type ButtonIconT = {
-  icon?: IconT;
-  customIcon?: React.ReactNode;
-  hasText: boolean;
-  position: 'left' | 'right';
-};
+  icon?: IconT
+  customIcon?: React.ReactNode
+  hasText: boolean
+  position: 'left' | 'right'
+}
 
 const ButtonIcon = ({
   icon,
@@ -59,10 +62,10 @@ const ButtonIcon = ({
   hasText,
   position = 'left',
 }: ButtonIconT) => {
-  if (customIcon) return <>{customIcon}</>;
+  if (customIcon) return <>{customIcon}</>
 
   if (!icon) {
-    return <></>;
+    return <></>
   }
 
   return (
@@ -72,16 +75,17 @@ const ButtonIcon = ({
       size={22}
       className={hasText ? styles[position] : ''}
     />
-  );
-};
+  )
+}
 
 const Button = ({
+  variant = 'solid',
+  color = 'primary',
   active,
   id,
   text,
   label,
   type = 'button',
-  category = 'primary_solid',
   size = 'medium',
   disabled,
   icon,
@@ -93,6 +97,7 @@ const Button = ({
   className = '',
   LinkComponent,
 }: ButtonPropsT) => {
+  console.log('variant', variant)
   const content = (
     <>
       {!iconPlacedRight && (
@@ -116,18 +121,18 @@ const Button = ({
         />
       )}
     </>
-  );
+  )
 
   /**
    * Configure CSS Class
    */
   const buttonStyle = `
-    ${styles['button_' + category]} 
+    ${styles['button_' + color + '_' + variant]} 
     ${styles[size]} 
     ${!text && styles[size + '_round']} 
     ${className} 
-    ${active && styles['button_' + category + '_active']}
-  `;
+    ${active && styles['button_' + color + '_' + variant + '_active']}
+  `
 
   if (href && LinkComponent) {
     // To support NextJs Link
@@ -140,7 +145,7 @@ const Button = ({
       >
         {content}
       </LinkComponent>
-    );
+    )
   }
 
   if (href) {
@@ -155,7 +160,7 @@ const Button = ({
       >
         {content}
       </a>
-    );
+    )
   }
   // Button logic remains unchanged
   return (
@@ -169,7 +174,7 @@ const Button = ({
     >
       {content}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
