@@ -17,7 +17,7 @@ export type ButtonCategoriesT =
   | 'secondary_clear'
 
 export type ButtonVariantT = 'solid' | 'outline' | 'clear'
-export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'alt'
+export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'pos'
 export type ButtonSizesT = 'small' | 'medium' | 'large'
 
 export type LinkComponentT = React.ComponentType<{

@@ -112,49 +112,48 @@
   /**
   DELETE INTERACTION
   **/
-  --color-interaction-delete: #e32727;
-  --color-interaction-delete-alt: #ffffff;
-  --color-interaction-delete-hover: #db4d4d;
-  --color-interaction-delete-active: #db4d4d;
-  --color-interaction-delete-disabled: #666;
-  --color-interaction-delete-alt-disabled: #777;
-
-  /**
+  --color-interaction-delete: var(--color-semantic-critical);
+  --color-interaction-delete-alt: var(--color-semantic-critical-bg-alt);
+  --color-interaction-delete-hover: var(--color-semantic-critical-hover)
+    --color-interaction-delete-active: var(--color-semantic-critical-active)
+    --color-interaction-delete-disabled: var(--color-semantic-critical-disabled)
+    --color-interaction-delete-alt-disabled:
+    var(--color-semantic-critical-disabled) /**
   ALT INTERACTION
   **/
-  --color-interaction-alt: #027640;
-  --color-interaction-alt-hover: #055133;
-  --color-interaction-alt-active: #06964e;
-  --color-interaction-alt-disabled: rgba(176, 176, 176, 0.5);
-  --color-interaction-alt-alt: #ffffff;
-  --color-interaction-alt-alt-hover: #e8effd;
-  --color-interaction-alt-alt-active: #cbd8f0;
-  --color-interaction-alt-alt-disabled: #e7e7e7;
+    --color-interaction-pos: var(--color-semantic-success);
+  --color-interaction-pos-hover: var(--color-semantic-success-hover);
+  --color-interaction-pos-active: var(--color-semantic-success-active);
+  --color-interaction-pos-disabled: var(--color-semantic-success-disabled);
+  --color-interaction-pos-alt: var(--color-semantic-success);
+  --color-interaction-pos-alt-hover: var(--color-semantic-success-hover);
+  --color-interaction-pos-alt-active: var(--color-semantic-success-disabled);
+  --color-interaction-pos-alt-disabled: var(--color-semantic-success-disabled);
 
   /**
   SEMANTIC
   **/
   --color-semantic-info: #0073bd;
-  --color-semantic-info-hover: #1c84cc;
-  --color-semantic-info-active: #3895d8;
-  --color-semantic-disabled: #6f6f6f;
+  --color-semantic-info-hover: #0068aa;
+  --color-semantic-info-active: #005c97;
+  --color-semantic-disabled: #a6a6a6;
   --color-semantic-success: #0c884c;
-  --color-semantic-success-hover: #229a60;
-  --color-semantic-success-active: #39ab74;
-  --color-semantic-success-disabled: #767676;
+  --color-semantic-success-hover: #0b7a44;
+  --color-semantic-success-active: #0a6d3d;
+  --color-semantic-success-disabled: #a6a6a6;
   --color-semantic-warning: #e9a949;
-  --color-semantic-warning-hover: #b8771c;
-  --color-semantic-warning-active: #c78938;
-  --color-semantic-warning-disabled: #747474;
+  --color-semantic-warning-hover: #d29842;
+  --color-semantic-warning-active: #a37633;
+  --color-semantic-warning-disabled: #a6a6a6;
   --color-semantic-critical: #d32947;
-  --color-semantic-critical-hover: #de3a57;
-  --color-semantic-critical-active: #e84d68;
-  --color-semantic-critical-disabled: #6e6e6e;
+  --color-semantic-critical-hover: #be2540;
+  --color-semantic-critical-active: #a92139;
+  --color-semantic-critical-disabled: #a6a6a6;
   --color-semantic-critical-bg-alt: #f9e1e5;
   --color-semantic-neutral: #b8b8b8;
-  --color-semantic-neutral-hover: #a8a8a8;
-  --color-semantic-neutral-active: #535353;
-  --color-semantic-neutral-inactive: #6e6e6e;
+  --color-semantic-neutral-hover: #a6a6a6;
+  --color-semantic-neutral-active: #939393;
+  --color-semantic-neutral-inactive: #a6a6a6;
 
   /**
   TEXT
@@ -164,10 +163,10 @@
   --color-text-reverse: #ffffff;
   --color-text-reverse-subtle: #e7e7e7;
   --color-text-disabled: #b0b0b0;
-  --color-text-info: #000000;
-  --color-text-success: #000000;
-  --color-text-warning: #000000;
-  --color-text-critical: #000000;
+  --color-text-info: #0073bd;
+  --color-text-success: #0c884c;
+  --color-text-warning: #e9a949;
+  --color-text-critical: #d32947;
 
   /**
   BORDER
