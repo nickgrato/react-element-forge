@@ -1,4 +1,4 @@
-@use "../../styles/core/boilerplate.scss" as *;
+@use '../../styles/core/boilerplate.scss' as *;
 
 @mixin rect_button_base() {
   font-family: var(--font-primary);
