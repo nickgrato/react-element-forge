@@ -1,37 +1,41 @@
-import { useCallback, useState } from "react";
-import styles from "./CopyButton.module.scss";
-import Button from "../Button";
+import { useCallback, useState } from 'react'
+import styles from './CopyButton.module.scss'
+import Button, { ButtonVariantT, ButtonColorT } from '../Button'
 
 export type CopyButtonPropsT = {
-  onClick?: Function;
-  successMessage?: string;
-  value: string | number;
-  className?: string;
-};
+  onClick?: Function
+  successMessage?: string
+  value: string | number
+  variant?: ButtonVariantT
+  color?: ButtonColorT
+  className?: string
+}
 
 const CopyButton = ({
   onClick,
-  successMessage = "Copied!",
+  successMessage = 'Copied!',
   value,
-  className = "",
+  variant = 'clear',
+  color = 'primary',
+  className = '',
 }: CopyButtonPropsT) => {
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false)
 
   const handleClick = useCallback(() => {
-    onClick && onClick();
+    onClick && onClick()
 
     navigator.clipboard.writeText(value.toString()).then(() => {
-      startSuccessTimer();
-    });
-  }, [onClick, value]);
+      startSuccessTimer()
+    })
+  }, [onClick, value])
 
   const startSuccessTimer = () => {
-    setSuccess(true);
+    setSuccess(true)
 
     setTimeout(() => {
-      setSuccess(false);
-    }, 1500);
-  };
+      setSuccess(false)
+    }, 1500)
+  }
 
   return (
     <>
@@ -44,11 +48,12 @@ const CopyButton = ({
           onClick={handleClick}
           icon="copy"
           size="small"
-          category="primary_clear"
+          variant={variant}
+          color={color}
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default CopyButton;
+export default CopyButton

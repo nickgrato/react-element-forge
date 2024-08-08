@@ -1,1 +1,1 @@
-export { default } from './CopyButton';
+export { default, type CopyButtonPropsT } from './CopyButton'

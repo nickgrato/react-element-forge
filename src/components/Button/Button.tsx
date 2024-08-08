@@ -3,19 +3,6 @@ import styles from './Button.module.scss'
 import Icon, { IconT } from '../Icon/Icon'
 
 export type ButtonT = 'button' | 'submit' | 'reset'
-
-/**
- * type is formatted in snake_case so that we can use the mapped
- * value as a SCSS value.
- */
-export type ButtonCategoriesT =
-  | 'primary_solid'
-  | 'primary_outline'
-  | 'primary_clear'
-  | 'secondary_solid'
-  | 'secondary_outline'
-  | 'secondary_clear'
-
 export type ButtonVariantT = 'solid' | 'outline' | 'clear'
 export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'alt'
 export type ButtonSizesT = 'small' | 'medium' | 'large'

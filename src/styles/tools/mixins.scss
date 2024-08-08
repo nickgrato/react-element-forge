@@ -6,7 +6,6 @@
   TYPOGRAPHY STYLES
 -------------------------------*/
 @mixin font-size($size: 16) {
-  -font-size-: $size;
   font-size: rem($size);
 }
 
@@ -93,22 +92,36 @@
 /*-------------------------------
   BODY STYLES
 -------------------------------*/
-@mixin body-lg($weight: 700) {
-  @include font-size(14);
-  @include primary-font($weight);
+@mixin body-lg {
+  @include primary-font(500);
+  @include font-size(18);
   line-height: 21px;
   letter-spacing: 0;
 
-  @include tablet-up {
+  @include tablet-down {
     @include font-size(16);
     line-height: 24px;
     letter-spacing: 0;
   }
 }
 
+// @mixin font-size($size: 16) {
+//   -font-size-: $size;
+//   font-size: rem($size);
+// }
+
+@mixin font-size($size) {
+  @if type-of($size) == number {
+    font-size: rem($size);
+  } @else {
+    font-size: calc(#{$size} / 16 * 1rem);
+  }
+}
+
 @mixin body-md {
   @include primary-font(500);
-  @include font-size(16);
+  @include font-size(var(--font-body-md));
+
   line-height: 24px;
 
   @include tablet-down {
@@ -133,8 +146,8 @@
 }
 
 @mixin body-sm {
+  @include primary-font(500);
   @include font-size(12);
-  @include primary-font(400);
   letter-spacing: 0;
   line-height: 25px;
 }

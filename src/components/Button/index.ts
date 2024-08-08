@@ -1,8 +1,9 @@
 export {
   default,
   type ButtonT,
-  type ButtonCategoriesT,
   type ButtonSizesT,
   type LinkComponentT,
   type ButtonPropsT,
+  type ButtonVariantT,
+  type ButtonColorT,
 } from './Button'

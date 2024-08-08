@@ -8,12 +8,13 @@ export {
 export {
   default as Button,
   type ButtonT,
-  type ButtonCategoriesT,
   type ButtonSizesT,
   type LinkComponentT,
+  type ButtonVariantT,
+  type ButtonColorT,
 } from './Button'
 export { default as Checkbox } from './Checkbox'
-export { default as CopyButton } from './CopyButton'
+export { default as CopyButton, type CopyButtonPropsT } from './CopyButton'
 export { default as FadeIn } from './FadeIn'
 export {
   default as Notification,

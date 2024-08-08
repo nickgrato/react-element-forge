@@ -30,6 +30,10 @@ $fontSizes: 12, 14, 16, 18, 20;
   @include body-md-bold();
 }
 
+.body-lg {
+  @include body-lg();
+}
+
 // Heading
 .heading-xxl {
   @include heading-xxl();
@@ -77,6 +81,10 @@ $fontSizes: 12, 14, 16, 18, 20;
 // ---------------------------------
 .color-text-main {
   color: $color-text-main;
+}
+
+.bg-neutral-0-reverse {
+  background-color: $color-neutral-0-reverse;
 }
 
 // ---------------------------------

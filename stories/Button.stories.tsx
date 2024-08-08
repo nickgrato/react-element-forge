@@ -2,7 +2,6 @@ import { StoryObj } from '@storybook/react'
 import type { Meta } from '@storybook/react'
 import Button, { ButtonPropsT } from '../src/components/Button'
 import '../src/styles/theme.scss'
-import styles from './Button.module.scss'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
@@ -21,7 +20,6 @@ const meta: Meta<typeof Button> = {
         type: 'select',
       },
     },
-    // Note: adding a react node as an option does not work in Story book
     customIcon: {
       control: {
         type: 'select',
@@ -52,7 +50,7 @@ type Story = StoryObj<typeof Button>
 const Template = (args: ButtonPropsT) => {
   return (
     <div
-      className={`${args.color === 'secondary' ? styles.secondary_background : ''} ${styles.wrapper}`}
+      className={`${args.color === 'secondary' ? 'bg-neutral-0-reverse' : ''} p-30px`}
     >
       <Button {...args} />
     </div>
