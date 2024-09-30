@@ -1,4 +1,4 @@
-@use '../../styles/core/boilerplate.scss'as *;
+@use '../../styles/core/boilerplate.scss' as *;
 
 .container {
   @include prefix(user-select, none, webkit ms moz);
@@ -7,7 +7,6 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  box-sizing: content-box;
 
   /* Hide the browser's default checkbox */
   input {
@@ -55,6 +54,7 @@
   background-color: $color-interaction-primary-alt;
   border: $color-interaction-primary solid 2px;
   border-radius: 4px;
+  box-sizing: content-box;
 
   /* Disabled Checkbox */
   &_disabled {

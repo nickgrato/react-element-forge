@@ -4,7 +4,7 @@ import Icon, { IconT } from '../Icon/Icon'
 
 export type ButtonT = 'button' | 'submit' | 'reset'
 export type ButtonVariantT = 'solid' | 'outline' | 'clear'
-export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'alt'
+export type ButtonColorT = 'primary' | 'secondary' | 'delete' | 'pos'
 export type ButtonSizesT = 'small' | 'medium' | 'large'
 
 export type LinkComponentT = React.ComponentType<{
@@ -84,7 +84,6 @@ const Button = ({
   className = '',
   LinkComponent,
 }: ButtonPropsT) => {
-  console.log('variant', variant)
   const content = (
     <>
       {!iconPlacedRight && (

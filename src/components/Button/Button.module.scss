@@ -6,7 +6,7 @@
   font-weight: var(--button-font-weight);
   line-height: 24px;
   border-radius: $button-border-radius;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--button-box-shadow);
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -1,21 +1,21 @@
-import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
-import Icon, { IconT } from '../Icon';
-import styles from './Switch.module.scss';
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
+import Icon, { IconT } from '../Icon'
+import styles from './Switch.module.scss'
 
 export type SwitchPropsT = {
-  label?: string;
-  defaultState?: boolean;
-  disabled?: boolean;
-  onChange: Function;
-  icon?: IconT;
-  iconOn?: IconT; // Note: to use "iconOn", "icon" needs to have a value.
-  hasIcon?: boolean;
-  className?: string;
-};
+  label?: string
+  defaultState?: boolean
+  disabled?: boolean
+  onChange: (value: boolean) => void
+  icon?: IconT
+  iconOn?: IconT // Note: to use "iconOn", "icon" needs to have a value.
+  hasIcon?: boolean
+  className?: string
+}
 
 export type switchT = {
-  setValue: (value: boolean) => void;
-};
+  setValue: (value: boolean) => void
+}
 
 const Switch = forwardRef(
   (
@@ -31,10 +31,10 @@ const Switch = forwardRef(
     }: SwitchPropsT,
     ref,
   ) => {
-    const [isOn, setIsOn] = useState(defaultState);
+    const [isOn, setIsOn] = useState(defaultState)
     const [currentIcon, setCurrentIcon] = useState<IconT | undefined>(
       defaultState === true && iconOn !== undefined ? iconOn : icon,
-    );
+    )
 
     /**
      * Exposed Component API
@@ -42,30 +42,30 @@ const Switch = forwardRef(
     useImperativeHandle(ref, () => {
       return {
         setValue: (value: boolean) => setIsOn(value),
-      };
-    });
+      }
+    })
 
     useEffect(() => {
       // If "on" find out if we put iconOn up or not
       if (isOn) {
         if (icon && iconOn) {
-          setCurrentIcon(iconOn);
-          return;
+          setCurrentIcon(iconOn)
+          return
         }
-        setCurrentIcon(icon);
-        return;
+        setCurrentIcon(icon)
+        return
       }
 
       // if "off" Icon is the default icon
-      icon && setCurrentIcon(icon);
-    }, [isOn, icon, iconOn]);
+      icon && setCurrentIcon(icon)
+    }, [isOn, icon, iconOn])
 
     const handleSwitchClick = () => {
-      if (disabled) return;
-      onChange(!isOn);
+      if (disabled) return
+      onChange(!isOn)
 
-      setIsOn((prevIsOn) => !prevIsOn);
-    };
+      setIsOn((prevIsOn) => !prevIsOn)
+    }
 
     return (
       <div className={`${className} ${styles.wrapper}`}>
@@ -92,9 +92,9 @@ const Switch = forwardRef(
 
         {label && <label>{label}</label>}
       </div>
-    );
+    )
   },
-);
+)
 
-Switch.displayName = 'Switch';
-export default Switch;
+Switch.displayName = 'Switch'
+export default Switch

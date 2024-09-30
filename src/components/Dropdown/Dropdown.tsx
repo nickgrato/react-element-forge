@@ -6,23 +6,23 @@ import {
   useCallback,
   useImperativeHandle,
   forwardRef,
-} from "react";
-import styles from "./Dropdown.module.scss";
-import FadeIn from "../FadeIn";
+} from 'react'
+import styles from './Dropdown.module.scss'
+import FadeIn from '../FadeIn'
 
 export type DropdownT = {
-  closeDropdown: Function;
-};
+  closeDropdown: () => void
+}
 
-export type AlignmentT = "left" | "right";
+export type AlignmentT = 'left' | 'right'
 type DropdownPropsT = {
-  cta: ReactNode;
-  content: ReactNode;
-  className?: string;
-  alignment?: AlignmentT;
-  width?: number;
-  selfClose?: boolean;
-};
+  cta: ReactNode
+  content: ReactNode
+  className?: string
+  alignment?: AlignmentT
+  width?: number
+  selfClose?: boolean
+}
 
 const Dropdown = forwardRef(
   (
@@ -32,12 +32,12 @@ const Dropdown = forwardRef(
       width = 320,
       alignment,
       selfClose = true,
-      className = "",
+      className = '',
     }: DropdownPropsT,
-    ref
+    ref,
   ) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const containerRef = useRef<HTMLDivElement>(null);
+    const [isOpen, setIsOpen] = useState(false)
+    const containerRef = useRef<HTMLDivElement>(null)
 
     /**
      * Exposed Component API
@@ -47,14 +47,14 @@ const Dropdown = forwardRef(
         closeDropdown: closeDropdown,
         openDropdown: openDropdown,
         toggleDropdown: toggleDropdown,
-      };
-    });
+      }
+    })
 
-    const closeDropdown = () => setIsOpen(false);
+    const closeDropdown = () => setIsOpen(false)
 
-    const openDropdown = () => setIsOpen(true);
+    const openDropdown = () => setIsOpen(true)
 
-    const toggleDropdown = () => setIsOpen((state) => !state);
+    const toggleDropdown = () => setIsOpen((state) => !state)
 
     /**
      * Setup Click Listener
@@ -67,18 +67,18 @@ const Dropdown = forwardRef(
           containerRef.current &&
           !containerRef.current.contains(e.target as Node)
         ) {
-          setIsOpen(false);
+          setIsOpen(false)
         }
-      };
+      }
 
-      document.addEventListener("mousedown", checkIfClickedOutside);
+      document.addEventListener('mousedown', checkIfClickedOutside)
       return () =>
-        document.removeEventListener("mousedown", checkIfClickedOutside);
-    }, [isOpen]);
+        document.removeEventListener('mousedown', checkIfClickedOutside)
+    }, [isOpen])
 
     const onToggleClick = useCallback(() => {
-      setIsOpen((state) => !state);
-    }, []);
+      setIsOpen((state) => !state)
+    }, [])
 
     return (
       <div
@@ -93,19 +93,19 @@ const Dropdown = forwardRef(
           <div
             style={{ width: `${width}px` }}
             className={`${styles.content_wrapper} ${
-              alignment === "right" ? styles.right : styles.left
+              alignment === 'right' ? styles.right : styles.left
             }`}
             onClick={() => {
-              if (selfClose) closeDropdown();
+              if (selfClose) closeDropdown()
             }}
           >
             {content}
           </div>
         </FadeIn>
       </div>
-    );
-  }
-);
+    )
+  },
+)
 
-Dropdown.displayName = "Dropdown";
-export default Dropdown;
+Dropdown.displayName = 'Dropdown'
+export default Dropdown

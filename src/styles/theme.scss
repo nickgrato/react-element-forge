@@ -1,6 +1,3 @@
-@use './tools/utility.scss' as *;
-@use './tools/flex.scss' as *;
-
 :root {
   /**
   FONTS
@@ -14,7 +11,19 @@
   **/
   --font-primary-weight: 500;
   --font-secondary-weight: 700;
+  // sizes
+  --font-body-xs: 12;
+  --font-body-sm: 14;
   --font-body-md: 16;
+  --font-body-lg: 18;
+  // mobile sizes
+  --font-body-mobile-md: 14;
+  --font-body-mobile-lg: 16;
+  // weights
+  --font-body-thin-weight: 300;
+  --font-body-regular-weight: 500;
+  --font-body-semibold-weight: 600;
+  --font-body-bold-weight: 700;
 
   /**
   AVATAR
@@ -34,6 +43,7 @@
   --button-padding-medium-round: 8px;
   --button-padding-small: 3px 6px;
   --button-padding-small-round: 6px;
+  --button-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
 
   /**
   COPY BUTTON
@@ -118,18 +128,21 @@
   **/
   --color-interaction-delete: var(--color-semantic-critical);
   --color-interaction-delete-alt: var(--color-semantic-critical-bg-alt);
-  --color-interaction-delete-hover: var(--color-semantic-critical-hover)
-    --color-interaction-delete-active: var(--color-semantic-critical-active)
-    --color-interaction-delete-disabled: var(--color-semantic-critical-disabled)
-    --color-interaction-delete-alt-disabled:
-    var(--color-semantic-critical-disabled) /**
+  --color-interaction-delete-hover: var(--color-semantic-critical-hover);
+  --color-interaction-delete-active: var(--color-semantic-critical-active);
+  --color-interaction-delete-disabled: var(--color-semantic-critical-disabled);
+  --color-interaction-delete-alt-disabled: var(
+    --color-semantic-critical-disabled
+  );
+
+  /**
   ALT INTERACTION
   **/
-    --color-interaction-pos: var(--color-semantic-success);
+  --color-interaction-pos: var(--color-semantic-success);
   --color-interaction-pos-hover: var(--color-semantic-success-hover);
   --color-interaction-pos-active: var(--color-semantic-success-active);
   --color-interaction-pos-disabled: var(--color-semantic-success-disabled);
-  --color-interaction-pos-alt: var(--color-semantic-success);
+  --color-interaction-pos-alt: var(--color-text-reverse);
   --color-interaction-pos-alt-hover: var(--color-semantic-success-hover);
   --color-interaction-pos-alt-active: var(--color-semantic-success-disabled);
   --color-interaction-pos-alt-disabled: var(--color-semantic-success-disabled);

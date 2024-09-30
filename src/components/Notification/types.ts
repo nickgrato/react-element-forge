@@ -1,11 +1,11 @@
-import { IconT } from '../Icon/Icon';
+import { IconT } from '../Icon/Icon'
 
 export type NotificationTypesT =
   | 'neutral'
   | 'success'
   | 'error'
   | 'info'
-  | 'warning';
+  | 'warning'
 
 export type NotificationLocationT =
   | 'top_center'
@@ -13,28 +13,28 @@ export type NotificationLocationT =
   | 'top_left'
   | 'bottom_center'
   | 'bottom_right'
-  | 'bottom_left';
+  | 'bottom_left'
 
-export type CategoryT = 'toast' | 'crumb';
+export type CategoryT = 'toast' | 'crumb'
 
 export type NewNotificationT = {
-  title: string;
-  description: string;
-  duration?: number;
-  autoClose?: boolean;
-  hasIcon?: boolean;
-  icon?: IconT;
-  type?: NotificationTypesT;
-  callback?: Function;
-  callbackCta?: string;
-  location?: NotificationLocationT;
-  pauseOnHover?: boolean;
-  category?: CategoryT;
-};
+  title: string
+  description: string
+  duration?: number
+  autoClose?: boolean
+  hasIcon?: boolean
+  icon?: IconT
+  type?: NotificationTypesT
+  callback?: () => void
+  callbackCta?: string
+  location?: NotificationLocationT
+  pauseOnHover?: boolean
+  category?: CategoryT
+}
 
 export const DEFAULT_NOTIFICATION: Partial<NewNotificationT> = {
   type: 'success',
   location: 'bottom_right',
   category: 'toast',
   description: '',
-};
+}

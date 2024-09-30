@@ -1,23 +1,23 @@
-import { useState, forwardRef, useImperativeHandle } from 'react';
-import { NewNotificationT, DEFAULT_NOTIFICATION } from './types';
-import styles from './Notification.module.scss';
-import NotificationMessage from './NotificationMessage';
+import { useState, forwardRef, useImperativeHandle } from 'react'
+import { NewNotificationT, DEFAULT_NOTIFICATION } from './types'
+import styles from './Notification.module.scss'
+import NotificationMessage from './NotificationMessage'
 
 export type NotificationPropsT = {
-  className?: string;
-};
+  className?: string
+}
 
 export type NotificationInterfaceT = {
-  dispatchNotification: Function;
-};
+  dispatchNotification: (newNotifcation: NewNotificationT) => void
+}
 
 export interface NotificationI extends NewNotificationT {
-  id: string;
+  id: string
 }
 
 const Notification = forwardRef(
   ({ className = '' }: NotificationPropsT, ref) => {
-    const [notifications, setNotifications] = useState<NotificationI[]>([]);
+    const [notifications, setNotifications] = useState<NotificationI[]>([])
 
     /**
      * Exposed Component API
@@ -25,8 +25,8 @@ const Notification = forwardRef(
     useImperativeHandle(ref, (): NotificationInterfaceT => {
       return {
         dispatchNotification: dispatchNotification,
-      };
-    });
+      }
+    })
 
     /**
      * Defult options
@@ -42,10 +42,10 @@ const Notification = forwardRef(
         ...DEFAULT_NOTIFICATION,
         ...newNotifcation,
         id: String(Date.now()),
-      };
+      }
 
-      setNotifications((notifications) => [notification, ...notifications]);
-    };
+      setNotifications((notifications) => [notification, ...notifications])
+    }
 
     /**
      * Filter out notification
@@ -56,15 +56,15 @@ const Notification = forwardRef(
     const filterNotifications = (
       toasts: NotificationI[],
       id: string,
-    ): NotificationI[] => toasts.filter((toast) => toast.id != id);
+    ): NotificationI[] => toasts.filter((toast) => toast.id != id)
 
     /**
      * Remove current message from state
      * @param id
      */
     const removeSelf = (id: string) => {
-      setNotifications((state) => filterNotifications(state, id));
-    };
+      setNotifications((state) => filterNotifications(state, id))
+    }
 
     /**
      * Render correct notification type
@@ -77,34 +77,34 @@ const Notification = forwardRef(
         key={notification.id}
         {...notification}
       />
-    );
+    )
 
     /**
      * Locations
      */
     const topCenterNotifications = notifications.filter(
       ({ location }) => location === 'top_center',
-    );
+    )
 
     const topRightNotifications = notifications.filter(
       ({ location }) => location === 'top_right',
-    );
+    )
 
     const topLeftNotifications = notifications.filter(
       ({ location }) => location === 'top_left',
-    );
+    )
 
     const bottomCenterNotifications = notifications.filter(
       ({ location }) => location === 'bottom_center',
-    );
+    )
 
     const bottomRightNotifications = notifications.filter(
       ({ location }) => location === 'bottom_right',
-    );
+    )
 
     const bottomLeftNotifications = notifications.filter(
       ({ location }) => location === 'bottom_left',
-    );
+    )
 
     return (
       <div id="lily_notification" className={className}>
@@ -150,9 +150,9 @@ const Notification = forwardRef(
           </div>
         )}
       </div>
-    );
+    )
   },
-);
+)
 
-Notification.displayName = 'Notification';
-export default Notification;
+Notification.displayName = 'Notification'
+export default Notification

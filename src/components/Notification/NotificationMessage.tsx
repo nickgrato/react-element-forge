@@ -1,33 +1,33 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
-import styles from './ToastMessage.module.scss';
-import FadeIn from '../FadeIn';
+import { useState, useRef, useCallback, useEffect } from 'react'
+import styles from './ToastMessage.module.scss'
+import FadeIn from '../FadeIn'
 import {
   NotificationTypesT,
   NotificationLocationT,
   CategoryT,
   DEFAULT_NOTIFICATION,
-} from './types';
-import { IconT } from '../Icon';
-import ToastMessage from './ToastMessage';
-import CrumbMessage from './CrumbMessage';
+} from './types'
+import { IconT } from '../Icon'
+import ToastMessage from './ToastMessage'
+import CrumbMessage from './CrumbMessage'
 
 export type NotificationMessagePropsT = {
-  title: string;
-  description: string;
-  id: string;
-  removeSelf?: (id: string) => void;
-  callback?: Function;
-  callbackCta?: string;
-  duration?: number;
-  autoClose?: boolean;
-  type?: NotificationTypesT;
-  location?: NotificationLocationT;
-  pauseOnHover?: boolean;
-  hasIcon?: boolean;
-  category?: CategoryT;
-  icon?: IconT;
-  className?: string;
-};
+  title: string
+  description: string
+  id: string
+  removeSelf?: (id: string) => void
+  callback?: () => void
+  callbackCta?: string
+  duration?: number
+  autoClose?: boolean
+  type?: NotificationTypesT
+  location?: NotificationLocationT
+  pauseOnHover?: boolean
+  hasIcon?: boolean
+  category?: CategoryT
+  icon?: IconT
+  className?: string
+}
 
 const NotificationMessage = ({
   title,
@@ -45,79 +45,76 @@ const NotificationMessage = ({
   category = DEFAULT_NOTIFICATION.category,
   icon,
 }: NotificationMessagePropsT) => {
-  const [isOpen, setIsOpen] = useState(true);
-  const intervalId = useRef<number>();
-  const notificationRef = useRef<HTMLDivElement>(null);
-  const progressBar = useRef<HTMLDivElement>(null);
-  const timeVisible = useRef<number>(0);
-  const touchStart = useRef<number>(0);
-  const touchEnd = useRef<number>(0);
+  const [isOpen, setIsOpen] = useState(true)
+  const intervalId = useRef<number>()
+  const notificationRef = useRef<HTMLDivElement>(null)
+  const progressBar = useRef<HTMLDivElement>(null)
+  const timeVisible = useRef<number>(0)
+  const touchStart = useRef<number>(0)
+  const touchEnd = useRef<number>(0)
 
   /**
    * Init Component
    */
   useEffect(() => {
-    setIsOpen(true);
-    initSwipe();
+    setIsOpen(true)
+    initSwipe()
 
     // If no auto close don't count down
-    if (!autoClose) return;
-    initInterval(timeVisible.current);
-  }, []);
+    if (!autoClose) return
+    initInterval(timeVisible.current)
+  }, [])
 
   /**
    * Init Swipe Events
    */
   const initSwipe = () => {
     // Touch Events
-    notificationRef.current?.addEventListener('touchstart', handleTouchStart);
-    notificationRef.current?.addEventListener('touchmove', handleTouchMove);
-    notificationRef.current?.addEventListener('touchend', handleTouchEnd);
-  };
+    notificationRef.current?.addEventListener('touchstart', handleTouchStart)
+    notificationRef.current?.addEventListener('touchmove', handleTouchMove)
+    notificationRef.current?.addEventListener('touchend', handleTouchEnd)
+  }
 
   /**
    * Remove Touch Events
    */
   const removeEvents = () => {
-    notificationRef.current?.removeEventListener(
-      'touchstart',
-      handleTouchStart,
-    );
-    notificationRef.current?.removeEventListener('touchmove', handleTouchMove);
-    notificationRef.current?.removeEventListener('touchend', handleTouchEnd);
-  };
+    notificationRef.current?.removeEventListener('touchstart', handleTouchStart)
+    notificationRef.current?.removeEventListener('touchmove', handleTouchMove)
+    notificationRef.current?.removeEventListener('touchend', handleTouchEnd)
+  }
 
   /**
    * Touch Start
    * @param e  TouchEvent
    */
   const handleTouchStart = (e: TouchEvent) => {
-    touchStart.current = e.targetTouches[0].clientX;
-  };
+    touchStart.current = e.targetTouches[0].clientX
+  }
 
   /**
    * Touch Move
    * @param e  TouchEvent
    */
   const handleTouchMove = (e: TouchEvent) => {
-    touchEnd.current = e.targetTouches[0].clientX;
-  };
+    touchEnd.current = e.targetTouches[0].clientX
+  }
 
   /**
    * Touch End
    */
   const handleTouchEnd = () => {
-    const threshold = 45;
+    const threshold = 45
     const difference =
       touchStart.current > touchEnd.current
         ? touchStart.current - touchEnd.current
-        : touchEnd.current - touchStart.current;
+        : touchEnd.current - touchStart.current
 
     // If touch distance goes over threshold then close toast
     if (difference > threshold) {
-      handleClose();
+      handleClose()
     }
-  };
+  }
 
   /**
    * Init interval for countdown
@@ -125,22 +122,22 @@ const NotificationMessage = ({
    */
   const initInterval = (time: number) => {
     const interval = window.setInterval(() => {
-      const increment = 10;
+      const increment = 10
 
       if (time > duration) {
-        window.clearInterval(interval);
-        handleClose();
+        window.clearInterval(interval)
+        handleClose()
       }
 
-      time += increment;
+      time += increment
       // Store ref to start again at that point if need be
-      timeVisible.current = time;
+      timeVisible.current = time
 
-      animateProgress(time, duration);
-    }, 10);
+      animateProgress(time, duration)
+    }, 10)
 
-    intervalId.current = interval;
-  };
+    intervalId.current = interval
+  }
 
   /**
    * Animate progress bar
@@ -151,33 +148,33 @@ const NotificationMessage = ({
     progressBar.current?.style.setProperty(
       '--progress',
       String(1 - time / duration),
-    );
-  };
+    )
+  }
 
   /**
    * Mouse Enter
    */
   const handleMouseEnter = () => {
-    if (!pauseOnHover || !autoClose) return;
-    window.clearInterval(intervalId.current);
-  };
+    if (!pauseOnHover || !autoClose) return
+    window.clearInterval(intervalId.current)
+  }
 
   /**
    * Mouse Leave
    */
   const handleMouseLeave = () => {
-    if (!pauseOnHover || !autoClose) return;
-    initInterval(timeVisible.current);
-  };
+    if (!pauseOnHover || !autoClose) return
+    initInterval(timeVisible.current)
+  }
 
   /**
    * On Close
    */
   const handleClose = useCallback(() => {
-    removeEvents();
-    setIsOpen(false);
-    window.clearInterval(intervalId.current);
-  }, []);
+    removeEvents()
+    setIsOpen(false)
+    window.clearInterval(intervalId.current)
+  }, [])
 
   /**
    * On fade out complete
@@ -185,26 +182,26 @@ const NotificationMessage = ({
   const handleOnComplete = useCallback(() => {
     if (!isOpen) {
       // dispatch parent to delete me
-      typeof removeSelf === 'function' && removeSelf(id);
+      typeof removeSelf === 'function' && removeSelf(id)
     }
-  }, [isOpen]);
+  }, [isOpen, removeSelf, id])
 
   const fadeAnimation = () => {
     // Fade to the right
-    let animation = 'translateX(100px)';
+    let animation = 'translateX(100px)'
     if (location === 'bottom_left' || location === 'top_left') {
       // Fade to the left
-      animation = 'translateX(-100px)';
+      animation = 'translateX(-100px)'
     }
-    return animation;
-  };
+    return animation
+  }
 
   const ProgressBar = (
     <div
       ref={progressBar}
       className={`${styles.progress_bar} ${autoClose && styles.active}`}
     ></div>
-  );
+  )
 
   const renderMessage = (param: CategoryT | undefined) => {
     const Toast = (
@@ -220,7 +217,7 @@ const NotificationMessage = ({
         close={handleClose}
         progressBar={ProgressBar}
       />
-    );
+    )
 
     switch (param) {
       case 'crumb':
@@ -235,13 +232,13 @@ const NotificationMessage = ({
             mouseLeave={handleMouseLeave}
             close={handleClose}
           />
-        );
+        )
       case 'toast':
-        return Toast;
+        return Toast
       default:
-        return Toast;
+        return Toast
     }
-  };
+  }
 
   return (
     <FadeIn
@@ -251,8 +248,8 @@ const NotificationMessage = ({
     >
       {renderMessage(category)}
     </FadeIn>
-  );
-};
+  )
+}
 
-NotificationMessage.displayName = 'NotificationMessage';
-export default NotificationMessage;
+NotificationMessage.displayName = 'NotificationMessage'
+export default NotificationMessage

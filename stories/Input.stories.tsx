@@ -1,15 +1,14 @@
-import { type Meta, StoryObj } from '@storybook/react';
-import Component from '../src/components/Input';
-import '../src/styles/theme.scss';
+import { type Meta, StoryObj } from '@storybook/react'
+import Component from '../src/components/Input'
 
 const meta: Meta<typeof Component> = {
   title: 'Example/Input',
   component: Component,
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Component>;
+type Story = StoryObj<typeof Component>
 
 export const Primary: Story = {
   args: {
@@ -20,4 +19,4 @@ export const Primary: Story = {
     required: true,
     autoComplete: 'off',
   },
-};
+}

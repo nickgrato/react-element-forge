@@ -7,44 +7,44 @@ import {
   forwardRef,
   useImperativeHandle,
   InputHTMLAttributes,
-} from 'react';
-import styles from './Input.module.scss';
-import Icon, { IconT } from '../Icon';
-import ToolTip from '../ToolTip';
+} from 'react'
+import styles from './Input.module.scss'
+import Icon, { IconT } from '../Icon'
+import ToolTip from '../ToolTip'
 
 /**
  * Methods available to access the component in the parent component. These would most likley
  * only be used outside of the form context. Ie search input or some type of filter input.
  */
 export type InputInterfaceT = {
-  focusInput: Function;
-  isDirty: Function;
-};
+  focusInput: () => void
+  isDirty: () => void
+}
 
-export type InputIconColorT = 'success' | 'error' | 'default';
+export type InputIconColorT = 'success' | 'error' | 'default'
 
 export interface InputPropsI extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  placeholder: string;
-  toolTip?: string;
-  name: string;
-  info?: string;
-  validator?: Function;
-  required?: boolean;
-  showRequired?: boolean;
-  isError?: boolean;
-  customErrorMessage?: string;
-  pattern?: string;
-  maxLength?: number;
-  minLength?: number;
-  value: string | number | readonly string[] | undefined;
-  icon?: IconT;
-  iconColor?: InputIconColorT;
-  id?: string;
-  readOnly?: boolean;
-  showLabel?: boolean;
-  mask?: RegExp;
-  className?: string;
+  label: string
+  placeholder: string
+  toolTip?: string
+  name: string
+  info?: string
+  validator?: () => void
+  required?: boolean
+  showRequired?: boolean
+  isError?: boolean
+  customErrorMessage?: string
+  pattern?: string
+  maxLength?: number
+  minLength?: number
+  value: string | number | readonly string[] | undefined
+  icon?: IconT
+  iconColor?: InputIconColorT
+  id?: string
+  readOnly?: boolean
+  showLabel?: boolean
+  mask?: RegExp
+  className?: string
 }
 
 const Input = forwardRef((props: InputPropsI, ref) => {
@@ -52,7 +52,8 @@ const Input = forwardRef((props: InputPropsI, ref) => {
     label,
     toolTip,
     info = '',
-    validator = () => true,
+    validator = (_value: string | number | readonly string[] | undefined) =>
+      true,
     required = false,
     showRequired = true,
     isError = false,
@@ -65,16 +66,16 @@ const Input = forwardRef((props: InputPropsI, ref) => {
     mask,
     className = '',
     onChange,
-  } = props as InputPropsI;
-  const [isValid, setIsValid] = useState<boolean>(false);
-  const [isDirty, setIsDirty] = useState<boolean>(false);
-  const [showError, setShowError] = useState<boolean>(false);
-  const [showInfo, setShowInfo] = useState<boolean>(false);
-  const [initialValue, _setInitialValue] = useState(value); // used to check if dirty
+  } = props as InputPropsI
+  const [isValid, setIsValid] = useState<boolean>(false)
+  const [isDirty, setIsDirty] = useState<boolean>(false)
+  const [showError, setShowError] = useState<boolean>(false)
+  const [showInfo, setShowInfo] = useState<boolean>(false)
+  const [initialValue] = useState(value) // used to check if dirty
   const [currentErrorMessage, setCurrentErrorMessage] = useState<string>(
     customErrorMessage ? customErrorMessage : '',
-  );
-  const inputRef = useRef<HTMLInputElement>(null);
+  )
+  const inputRef = useRef<HTMLInputElement>(null)
 
   /**
    * Exposed Component API
@@ -83,40 +84,39 @@ const Input = forwardRef((props: InputPropsI, ref) => {
     return {
       focusInput: () => inputRef.current?.focus(),
       isDirty: () => isDirty,
-    };
-  });
+    }
+  })
 
   /**
    * Validate Input
    */
   useEffect(() => {
-    const input = inputRef.current;
-    if (!input) return;
-    console.log('input', input);
-    const valid = input.validity.valid;
-    const validationMessage = input.validationMessage;
-    const validation = valid && validator(value);
+    const input = inputRef.current
+    if (!input) return
+    const valid = input.validity.valid
+    const validationMessage = input.validationMessage
+    const validation = valid && validator(value)
 
     // Prop error message takes precedence
     if (!validation) {
       const message = customErrorMessage
         ? customErrorMessage
-        : validationMessage;
-      message ? setCurrentErrorMessage(message) : null;
+        : validationMessage
+      message ? setCurrentErrorMessage(message) : null
     }
-    setIsValid(validation);
-  }, [value, customErrorMessage, validator]);
+    setIsValid(validation ? true : false)
+  }, [value, customErrorMessage, validator])
 
   /**
    * Error UI logic
    */
   useEffect(() => {
-    setShowError(isError || (isDirty && !isValid));
-  }, [isDirty, isValid, isError]);
+    setShowError(isError || (isDirty && !isValid))
+  }, [isDirty, isValid, isError])
 
   useEffect(() => {
-    setShowInfo(Boolean(info.length));
-  }, [info]);
+    setShowInfo(Boolean(info.length))
+  }, [info])
 
   /**
    * Handle Input Change
@@ -125,16 +125,16 @@ const Input = forwardRef((props: InputPropsI, ref) => {
   const handleOnChange: ChangeEventHandler<HTMLInputElement> = (
     event: ChangeEvent<HTMLInputElement>,
   ): ChangeEvent<HTMLInputElement> => {
-    const newValue = event.target.value;
+    const newValue = event.target.value
 
-    if (mask && !mask.test(newValue)) return event;
-    typeof onChange === 'function' && onChange(event);
+    if (mask && !mask.test(newValue)) return event
+    typeof onChange === 'function' && onChange(event)
     // If initial value was empty any change makes form dirty
-    const isDirty = initialValue === '' ? true : initialValue !== newValue;
-    setIsDirty(isDirty);
+    const isDirty = initialValue === '' ? true : initialValue !== newValue
+    setIsDirty(isDirty)
 
-    return event;
-  };
+    return event
+  }
 
   return (
     <div
@@ -181,8 +181,8 @@ const Input = forwardRef((props: InputPropsI, ref) => {
       {/* Additional Input Information  */}
       {showInfo ? <span className={styles.info}>{info}</span> : ''}
     </div>
-  );
-});
+  )
+})
 
-Input.displayName = 'Input';
-export default Input;
+Input.displayName = 'Input'
+export default Input

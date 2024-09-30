@@ -28,7 +28,7 @@ import { Button } from 'react-element-forge';
 
 function App() {
   return (
-    <Button category="primary_solid" icon="alert-circle" text="click me!!" />
+    <Button   icon="alert-circle" text="click me!!" />
   );
 }
 ```

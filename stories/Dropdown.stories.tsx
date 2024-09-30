@@ -1,22 +1,21 @@
-import { type Meta, StoryObj } from '@storybook/react';
-import Component from '../src/components/Dropdown';
-import Button from '../src/components/Button';
-import '../src/styles/theme.scss';
+import { type Meta, StoryObj } from '@storybook/react'
+import Component from '../src/components/Dropdown'
+import Button from '../src/components/Button'
 
 const meta: Meta<typeof Component> = {
   title: 'Example/Dropdown',
   component: Component,
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Component>;
+type Story = StoryObj<typeof Component>
 
 const CtaExample = (
   <div style={{ position: 'relative' }}>
     <Button label="cta" text="CTA" />
   </div>
-);
+)
 const ContentExample = (
   <div
     style={{
@@ -27,7 +26,7 @@ const ContentExample = (
   >
     Dropdown Content
   </div>
-);
+)
 
 export const Primary: Story = {
   args: {
@@ -35,4 +34,4 @@ export const Primary: Story = {
     content: ContentExample,
     alignment: 'left',
   },
-};
+}

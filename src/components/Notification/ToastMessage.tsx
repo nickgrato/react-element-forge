@@ -1,21 +1,21 @@
-import { useCallback, forwardRef, ForwardedRef, ReactNode } from 'react';
-import styles from './ToastMessage.module.scss';
-import Button from '../Button';
-import { NotificationTypesT } from './types';
-import NotificationIcon from './NotificationIcon';
+import { useCallback, forwardRef, ForwardedRef, ReactNode } from 'react'
+import styles from './ToastMessage.module.scss'
+import Button from '../Button'
+import { NotificationTypesT } from './types'
+import NotificationIcon from './NotificationIcon'
 
 export type ToastPropsT = {
-  title: string;
-  description: string;
-  callback?: Function;
-  callbackCta?: string;
-  type?: NotificationTypesT;
-  mouseEnter: () => void;
-  mouseLeave: () => void;
-  close: () => void;
-  progressBar?: ReactNode;
-  className?: string;
-};
+  title: string
+  description: string
+  callback?: () => void
+  callbackCta?: string
+  type?: NotificationTypesT
+  mouseEnter: () => void
+  mouseLeave: () => void
+  close: () => void
+  progressBar?: ReactNode
+  className?: string
+}
 
 const ToastMessage = forwardRef(
   (
@@ -37,8 +37,8 @@ const ToastMessage = forwardRef(
      * Handle CTA action click
      */
     const handleAction = useCallback(() => {
-      typeof callback === 'function' && callback();
-    }, []);
+      typeof callback === 'function' && callback()
+    }, [callback])
 
     return (
       <div
@@ -52,7 +52,8 @@ const ToastMessage = forwardRef(
           icon="x"
           className={styles.close}
           label="close"
-          category="primary_clear"
+          variant="clear"
+          color="primary"
         />
         <div className="flex">
           <div className={styles.icons}>
@@ -69,7 +70,8 @@ const ToastMessage = forwardRef(
                   text={callbackCta}
                   label={callbackCta}
                   size="small"
-                  category="primary_outline"
+                  color="primary"
+                  variant="outline"
                   icon="arrow-right"
                   iconPlacedRight={true}
                 />
@@ -80,9 +82,9 @@ const ToastMessage = forwardRef(
 
         {progressBar}
       </div>
-    );
+    )
   },
-);
+)
 
-ToastMessage.displayName = 'ToastMessage';
-export default ToastMessage;
+ToastMessage.displayName = 'ToastMessage'
+export default ToastMessage

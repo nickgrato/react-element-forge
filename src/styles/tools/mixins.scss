@@ -2,6 +2,13 @@
 @use './media-queries.scss' as *;
 @use './functions.scss' as *;
 
+@mixin font-size($size) {
+  @if type-of($size) == number {
+    font-size: rem($size);
+  } @else {
+    font-size: calc(#{$size} / 16 * 1rem);
+  }
+}
 /*-------------------------------
   TYPOGRAPHY STYLES
 -------------------------------*/
@@ -94,66 +101,52 @@
 -------------------------------*/
 @mixin body-lg {
   @include primary-font(500);
-  @include font-size(18);
+  @include font-size(var(--font-body-lg));
   line-height: 21px;
   letter-spacing: 0;
 
   @include tablet-down {
-    @include font-size(16);
+    @include font-size(var(--font-body-mobile-lg));
     line-height: 24px;
-    letter-spacing: 0;
-  }
-}
-
-// @mixin font-size($size: 16) {
-//   -font-size-: $size;
-//   font-size: rem($size);
-// }
-
-@mixin font-size($size) {
-  @if type-of($size) == number {
-    font-size: rem($size);
-  } @else {
-    font-size: calc(#{$size} / 16 * 1rem);
   }
 }
 
 @mixin body-md {
-  @include primary-font(500);
+  @include primary-font(var(--font-body-regular-weight));
   @include font-size(var(--font-body-md));
-
   line-height: 24px;
+  letter-spacing: 0;
 
   @include tablet-down {
-    @include font-size(14);
+    @include font-size(var(--font-body-mobile-md));
   }
 }
 
 @mixin body-md-semi-bold {
   @include primary-font(600);
-  @include font-size(16);
+  @include font-size(var(--font-body-md));
   line-height: 24px;
 
   @include tablet-down {
-    @include font-size(14);
+    @include font-size(var(--font-body-mobile-md));
   }
 }
 
 @mixin body-md-bold {
   @include primary-font(700);
-  @include font-size(16);
+  @include font-size(var(--font-body-md));
   line-height: 24px;
 }
 
 @mixin body-sm {
   @include primary-font(500);
-  @include font-size(12);
+  @include font-size(var(--font-body-sm));
   letter-spacing: 0;
   line-height: 25px;
 }
 
 @mixin body-xs {
-  @include font-size(10);
+  @include font-size(var(--font-body-xs));
   @include primary-font(300);
   line-height: 13px;
 }

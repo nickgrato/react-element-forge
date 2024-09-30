@@ -1,16 +1,15 @@
-import { type Meta, StoryObj } from '@storybook/react';
-import Component from '../src/components/RadioButton';
-import { useState } from 'react';
-import '../src/styles/theme.scss';
+import { type Meta, StoryObj } from '@storybook/react'
+import Component from '../src/components/RadioButton'
+import { useState } from 'react'
 
 const meta: Meta<typeof Component> = {
   title: 'Example/RadioButton',
   component: Component,
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Component>;
+type Story = StoryObj<typeof Component>
 
 const radioFormOptions = [
   {
@@ -31,13 +30,13 @@ const radioFormOptions = [
     groupName: 'example',
     id: 'label_3',
   },
-];
+]
 
 const Template = (props: any) => {
-  const [value, setValue] = useState(radioFormOptions[0].value);
+  const [value, setValue] = useState(radioFormOptions[0].value)
   const onChange = (e: any) => {
-    setValue(e.target.value);
-  };
+    setValue(e.target.value)
+  }
 
   return (
     <form>
@@ -53,12 +52,12 @@ const Template = (props: any) => {
               id={option.id}
               groupName={option.groupName}
             />
-          );
+          )
         })}
       </fieldset>
     </form>
-  );
-};
+  )
+}
 
 export const Primary: Story = {
   render: (args) => <Template {...args} />,
@@ -67,4 +66,4 @@ export const Primary: Story = {
     groupName: 'group',
     value: 'value',
   },
-};
+}

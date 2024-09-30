@@ -1,4 +1,4 @@
-import Icon from '../Icon';
+import Icon from '../Icon'
 import {
   FocusEventHandler,
   ChangeEventHandler,
@@ -8,37 +8,38 @@ import {
   useRef,
   forwardRef,
   useImperativeHandle,
-} from 'react';
-import styles from './Select.module.scss';
+  FocusEvent,
+} from 'react'
+import styles from './Select.module.scss'
 
 export type SelectInterfaceT = {
-  focusSelect: Function;
-  isDirty: Function;
-};
+  focusSelect: () => void
+  isDirty: () => void
+}
 
 export type OptionT = {
-  value: string;
-  label: string;
-};
+  value: string
+  label: string
+}
 
 type SelectPropsT = {
-  label: string;
-  options: OptionT[];
-  name: string;
-  info?: string;
-  className?: string;
-  onBlur?: Function;
-  onFocus?: Function;
-  onChange?: Function;
-  validator?: Function;
-  required?: boolean;
-  showRequired?: boolean;
-  showLabel?: boolean;
-  isError?: boolean;
-  customErrorMessage?: string;
-  value: string | number | readonly string[] | undefined;
-  id?: string;
-};
+  label: string
+  options: OptionT[]
+  name: string
+  info?: string
+  className?: string
+  onBlur?: (e: FocusEvent<HTMLSelectElement, Element>) => void
+  onFocus?: () => void
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void
+  validator?: (value: string | number | readonly string[] | undefined) => void
+  required?: boolean
+  showRequired?: boolean
+  showLabel?: boolean
+  isError?: boolean
+  customErrorMessage?: string
+  value: string | number | readonly string[] | undefined
+  id?: string
+}
 
 const Select = forwardRef(
   (
@@ -62,15 +63,15 @@ const Select = forwardRef(
     }: SelectPropsT,
     ref,
   ) => {
-    const [isValid, setIsValid] = useState<boolean>(false);
-    const [isDirty, setIsDirty] = useState<boolean>(false);
-    const [showError, setShowError] = useState<boolean>(false);
-    const [showInfo, setShowInfo] = useState<boolean>(false);
-    const [initialValue, _setInitialValue] = useState(value); // used to check if dirty
+    const [isValid, setIsValid] = useState<boolean>(false)
+    const [isDirty, setIsDirty] = useState<boolean>(false)
+    const [showError, setShowError] = useState<boolean>(false)
+    const [showInfo, setShowInfo] = useState<boolean>(false)
+    const [initialValue] = useState(value) // used to check if dirty
     const [currentErrorMessage, setCurrentErrorMessage] = useState<string>(
       customErrorMessage ? customErrorMessage : '',
-    );
-    const selectRef = useRef<HTMLSelectElement>(null);
+    )
+    const selectRef = useRef<HTMLSelectElement>(null)
 
     /**
      * Exposed Component API
@@ -79,19 +80,19 @@ const Select = forwardRef(
       return {
         focusSelect: () => selectRef.current?.focus(),
         isDirty: () => isDirty,
-      };
-    });
+      }
+    })
 
     /**
      * Error UI logic
      */
     useEffect(() => {
-      setShowError(isError || (isDirty && !isValid));
-    }, [isDirty, isValid, isError]);
+      setShowError(isError || (isDirty && !isValid))
+    }, [isDirty, isValid, isError])
 
     useEffect(() => {
-      setShowInfo(Boolean(info.length) && !showError);
-    }, [info, showError]);
+      setShowInfo(Boolean(info.length) && !showError)
+    }, [info, showError])
 
     /**
      * Handle Select Change
@@ -100,50 +101,50 @@ const Select = forwardRef(
     const handleOnChange: ChangeEventHandler<HTMLSelectElement> = (
       event: ChangeEvent<HTMLSelectElement>,
     ): ChangeEvent<HTMLSelectElement> => {
-      const newValue = event.target.value;
-      typeof onChange === 'function' && onChange(event);
+      const newValue = event.target.value
+      typeof onChange === 'function' && onChange(event)
 
       // If initial value was empty any change makes form dirty
-      const isDirty = initialValue === '' ? true : initialValue !== newValue;
-      setIsDirty(isDirty);
-      return event;
-    };
+      const isDirty = initialValue === '' ? true : initialValue !== newValue
+      setIsDirty(isDirty)
+      return event
+    }
 
     /**
      * Handle Blur
      * @param event
      */
     const handleOnBlur: FocusEventHandler<HTMLSelectElement> = (event) => {
-      typeof onBlur === 'function' && onBlur(event);
-    };
+      typeof onBlur === 'function' && onBlur(event)
+    }
 
     /**
      * Handle Focus
      */
     const handleOnFocus = () => {
-      typeof onFocus === 'function' && onFocus();
-    };
+      typeof onFocus === 'function' && onFocus()
+    }
 
     /**
      * Validate Select
      */
     useEffect(() => {
-      const select = selectRef.current;
-      if (!select) return;
+      const select = selectRef.current
+      if (!select) return
 
-      const valid = select.validity.valid;
-      const validationMessage = select.validationMessage;
-      const validation = valid && validator(value);
+      const valid = select.validity.valid
+      const validationMessage = select.validationMessage
+      const validation = valid && validator(value)
 
       // Prop error message takes precedence
       if (!validation) {
         const message = customErrorMessage
           ? customErrorMessage
-          : validationMessage;
-        message ? setCurrentErrorMessage(message) : null;
+          : validationMessage
+        message ? setCurrentErrorMessage(message) : null
       }
-      setIsValid(validation);
-    }, [value, customErrorMessage, validator]);
+      setIsValid(validation ? true : false)
+    }, [value, customErrorMessage, validator])
 
     return (
       <div
@@ -174,7 +175,7 @@ const Select = forwardRef(
                 <option key={i} value={optionValue}>
                   {label}
                 </option>
-              );
+              )
             })}
           </select>
           <Icon className={styles.arrow} name="chevron-down" />
@@ -190,9 +191,9 @@ const Select = forwardRef(
         {/* Additional Select Information  */}
         {showInfo ? <span className={styles.info}>{info}</span> : ''}
       </div>
-    );
+    )
   },
-);
+)
 
-Select.displayName = 'Select';
-export default Select;
+Select.displayName = 'Select'
+export default Select

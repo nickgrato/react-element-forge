@@ -3,7 +3,7 @@ import styles from './CopyButton.module.scss'
 import Button, { ButtonVariantT, ButtonColorT } from '../Button'
 
 export type CopyButtonPropsT = {
-  onClick?: Function
+  onClick?: () => void
   successMessage?: string
   value: string | number
   variant?: ButtonVariantT

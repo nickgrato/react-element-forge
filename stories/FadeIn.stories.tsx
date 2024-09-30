@@ -1,20 +1,19 @@
-import { type Meta, StoryObj } from '@storybook/react';
-import Component from '../src/components/FadeIn';
-import Button from '../src/components/Button';
-import { useState } from 'react';
-import '../src/styles/theme.scss';
+import { type Meta, StoryObj } from '@storybook/react'
+import Component from '../src/components/FadeIn'
+import Button from '../src/components/Button'
+import { useState } from 'react'
 
 const meta: Meta<typeof Component> = {
   title: 'Example/FadeIn',
   component: Component,
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Component>;
+type Story = StoryObj<typeof Component>
 
 const Template = (props: any) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true)
 
   return (
     <div>
@@ -23,13 +22,13 @@ const Template = (props: any) => {
           className="mr-12px"
           text="Fade In"
           onClick={() => {
-            setVisible(true);
+            setVisible(true)
           }}
         />
         <Button
           text="Fade Out"
           onClick={() => {
-            setVisible(false);
+            setVisible(false)
           }}
         />
       </div>
@@ -49,12 +48,12 @@ const Template = (props: any) => {
         </div>
       </Component>
     </div>
-  );
-};
+  )
+}
 
 export const Primary: Story = {
   render: (args) => <Template {...args} />,
   args: {
     animation: 'translateY(20px)',
   },
-};
+}

@@ -5,21 +5,21 @@ import {
   useRef,
   useState,
   useEffect,
-} from 'react';
-import ReactDOM from 'react-dom';
-import styles from './Modal.module.scss';
+} from 'react'
+import ReactDOM from 'react-dom'
+import styles from './Modal.module.scss'
 
 export type ModalPropsT = {
-  children: ReactNode;
-  isVisible: Boolean;
+  children: ReactNode
+  isVisible: boolean
   // "hasContainer" gives you the flexibility to put all the children in a pre-formatted modal card, This will be a majority of the time.
   // If you want a custom modal display, set this to false and add whatever you want to the "children"
-  hasContainer?: Boolean;
-  zIndex?: number;
-  isBackdropClickDisabled?: boolean;
-  onClose: MouseEventHandler<HTMLDivElement>;
-  className?: string;
-};
+  hasContainer?: boolean
+  zIndex?: number
+  isBackdropClickDisabled?: boolean
+  onClose: MouseEventHandler<HTMLDivElement>
+  className?: string
+}
 
 const Modal = ({
   children,
@@ -30,56 +30,56 @@ const Modal = ({
   onClose,
   className = '',
 }: ModalPropsT) => {
-  const ref = useRef<Element | null>(null);
-  const [mounted, setMounted] = useState(false);
-  const [animateIn, setAnimateIn] = useState(false);
-  const [isModalVisible, setisModalVisible] = useState(isVisible);
-
-  const animateInModal = () => {
-    document.body.style.overflow = 'hidden';
-    setisModalVisible(isVisible);
-    setTimeout(() => {
-      setAnimateIn(true);
-    }, 50);
-  };
-
-  const animateOutModal = () => {
-    document.body.style.overflow = 'initial';
-    setAnimateIn(false);
-    setTimeout(() => {
-      setisModalVisible(isVisible);
-    }, 500);
-  };
+  const ref = useRef<Element | null>(null)
+  const [mounted, setMounted] = useState(false)
+  const [animateIn, setAnimateIn] = useState(false)
+  const [isModalVisible, setisModalVisible] = useState(isVisible)
 
   useEffect(() => {
-    ref.current = document.getElementById('LP_modal_portal') as Element;
-    setMounted(true);
-  }, []);
+    ref.current = document.getElementById('RE_modal_portal') as Element
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
+    const animateInModal = () => {
+      document.body.style.overflow = 'hidden'
+      setisModalVisible(isVisible)
+      setTimeout(() => {
+        setAnimateIn(true)
+      }, 50)
+    }
+
+    const animateOutModal = () => {
+      document.body.style.overflow = 'initial'
+      setAnimateIn(false)
+      setTimeout(() => {
+        setisModalVisible(isVisible)
+      }, 500)
+    }
+
     if (isVisible) {
-      animateInModal();
+      animateInModal()
     } else {
-      animateOutModal();
+      animateOutModal()
     }
 
     return () => {
-      document.body.style.overflow = 'initial';
-    };
-  }, [isVisible]);
+      document.body.style.overflow = 'initial'
+    }
+  }, [isVisible])
 
   /**
    * Backdrop Click
    * @param e MouseEvent
    */
   const handleBackdropClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (isBackdropClickDisabled) return;
+    if (isBackdropClickDisabled) return
 
-    const { id } = e.target as Element;
+    const { id } = e.target as Element
     if (id === 'backdropContainer' || id === 'backdropWrapper') {
-      onClose && onClose(e);
+      onClose && onClose(e)
     }
-  };
+  }
 
   return mounted && ref.current && isModalVisible ? (
     <>
@@ -105,7 +105,7 @@ const Modal = ({
         ref.current,
       )}
     </>
-  ) : null;
-};
+  ) : null
+}
 
-export default Modal;
+export default Modal

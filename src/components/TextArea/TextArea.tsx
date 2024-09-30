@@ -7,47 +7,48 @@ import {
   useRef,
   forwardRef,
   useImperativeHandle,
-} from 'react';
-import styles from './TextArea.module.scss';
-import Icon, { IconT } from '../Icon';
-import ToolTip from '../ToolTip';
+  FocusEvent,
+} from 'react'
+import styles from './TextArea.module.scss'
+import Icon, { IconT } from '../Icon'
+import ToolTip from '../ToolTip'
 
 /**
  * Methods available to access the component in the parent component. These would most likley
  * only be used outside of the form context. Ie search input or some type of filter input.
  */
 export type TextAreaInterfaceT = {
-  focusTextArea: Function;
-  isDirty: Function;
-};
+  focusTextArea: () => void
+  isDirty: () => void
+}
 
-export type TextAreaIconColorT = 'success' | 'error' | 'default';
+export type TextAreaIconColorT = 'success' | 'error' | 'default'
 
 type TextAreaPropsT = {
-  label: string;
-  showLabel?: boolean;
-  placeholder: string;
-  toolTip?: string;
-  name: string;
-  info?: string;
-  disabled?: boolean;
-  validator?: Function;
-  required?: boolean;
-  showRequired?: boolean;
-  isError?: boolean;
-  customErrorMessage?: string;
-  maxLength?: number;
-  minLength?: number;
-  value: string | number | readonly string[] | undefined;
-  icon?: IconT;
-  iconColor?: TextAreaIconColorT;
-  readOnly?: boolean;
-  id?: string;
-  onBlur?: Function;
-  onFocus?: Function;
-  onChange?: Function;
-  className?: string;
-};
+  label: string
+  showLabel?: boolean
+  placeholder: string
+  toolTip?: string
+  name: string
+  info?: string
+  disabled?: boolean
+  validator?: (value: string | number | readonly string[] | undefined) => void
+  required?: boolean
+  showRequired?: boolean
+  isError?: boolean
+  customErrorMessage?: string
+  maxLength?: number
+  minLength?: number
+  value: string | number | readonly string[] | undefined
+  icon?: IconT
+  iconColor?: TextAreaIconColorT
+  readOnly?: boolean
+  id?: string
+  onBlur?: (e: FocusEvent<HTMLTextAreaElement, Element>) => void
+  onFocus?: () => void
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
+  className?: string
+}
 
 const TextArea = forwardRef(
   (
@@ -78,15 +79,15 @@ const TextArea = forwardRef(
     }: TextAreaPropsT,
     ref,
   ) => {
-    const [isValid, setIsValid] = useState<boolean>(false);
-    const [isDirty, setIsDirty] = useState<boolean>(false);
-    const [showError, setShowError] = useState<boolean>(false);
-    const [showInfo, setShowInfo] = useState<boolean>(false);
-    const [initialValue, _setInitialValue] = useState(value); // used to check if dirty
+    const [isValid, setIsValid] = useState<boolean>(false)
+    const [isDirty, setIsDirty] = useState<boolean>(false)
+    const [showError, setShowError] = useState<boolean>(false)
+    const [showInfo, setShowInfo] = useState<boolean>(false)
+    const [initialValue] = useState(value) // used to check if dirty
     const [currentErrorMessage, setCurrentErrorMessage] = useState<string>(
       customErrorMessage ? customErrorMessage : '',
-    );
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    )
+    const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
     /**
      * Exposed Component API
@@ -95,40 +96,40 @@ const TextArea = forwardRef(
       return {
         focusTextArea: () => textAreaRef.current?.focus(),
         isDirty: () => isDirty,
-      };
-    });
+      }
+    })
 
     /**
      * Validate TextArea
      */
     useEffect(() => {
-      const textArea = textAreaRef.current;
-      if (!textArea) return;
+      const textArea = textAreaRef.current
+      if (!textArea) return
 
-      const valid = textArea.validity.valid;
-      const validationMessage = textArea.validationMessage;
-      const validation = valid && validator(value);
+      const valid = textArea.validity.valid
+      const validationMessage = textArea.validationMessage
+      const validation = valid && validator(value)
 
       // Prop error message takes precedence
       if (!validation) {
         const message = customErrorMessage
           ? customErrorMessage
-          : validationMessage;
-        message ? setCurrentErrorMessage(message) : null;
+          : validationMessage
+        message ? setCurrentErrorMessage(message) : null
       }
-      setIsValid(validation);
-    }, [value, customErrorMessage, validator]);
+      setIsValid(validation ? true : false)
+    }, [value, customErrorMessage, validator])
 
     /**
      * Error UI logic
      */
     useEffect(() => {
-      setShowError(isError || (isDirty && !isValid));
-    }, [isDirty, isValid, isError]);
+      setShowError(isError || (isDirty && !isValid))
+    }, [isDirty, isValid, isError])
 
     useEffect(() => {
-      setShowInfo(Boolean(info.length) && !showError);
-    }, [info, showError]);
+      setShowInfo(Boolean(info.length) && !showError)
+    }, [info, showError])
 
     /**
      * Handle TextArea Change
@@ -137,29 +138,29 @@ const TextArea = forwardRef(
     const handleOnChange: ChangeEventHandler<HTMLTextAreaElement> = (
       event: ChangeEvent<HTMLTextAreaElement>,
     ): ChangeEvent<HTMLTextAreaElement> => {
-      const newValue = event.target.value;
-      typeof onChange === 'function' && onChange(event);
+      const newValue = event.target.value
+      typeof onChange === 'function' && onChange(event)
 
       // If initial value was empty any change makes form dirty
-      const isDirty = initialValue === '' ? true : initialValue !== newValue;
-      setIsDirty(isDirty);
-      return event;
-    };
+      const isDirty = initialValue === '' ? true : initialValue !== newValue
+      setIsDirty(isDirty)
+      return event
+    }
 
     /**
      * Handle Blur
      * @param event
      */
     const handleOnBlur: FocusEventHandler<HTMLTextAreaElement> = (event) => {
-      typeof onBlur === 'function' && onBlur(event);
-    };
+      typeof onBlur === 'function' && onBlur(event)
+    }
 
     /**
      * Handle Focus
      */
     const handleOnFocus = () => {
-      typeof onFocus === 'function' && onFocus();
-    };
+      typeof onFocus === 'function' && onFocus()
+    }
 
     return (
       <div
@@ -214,9 +215,9 @@ const TextArea = forwardRef(
         {/* Additional TextArea Information  */}
         {showInfo ? <span className={styles.info}>{info}</span> : ''}
       </div>
-    );
+    )
   },
-);
+)
 
-TextArea.displayName = 'TextArea';
-export default TextArea;
+TextArea.displayName = 'TextArea'
+export default TextArea
