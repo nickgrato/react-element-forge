@@ -1,26 +1,34 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
   stories: [
-    "../stories/*.stories.mdx",
-    "../stories/*.stories.@(js|jsx|ts|tsx)",
+    '../stories/*.stories.mdx',
+    '../stories/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    "@storybook/addon-onboarding",
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
-    "@storybook/preset-scss",
+    '@storybook/addon-onboarding',
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@chromatic-com/storybook',
+    '@storybook/addon-interactions',
+    '@storybook/preset-scss',
   ],
+  core: {
+    builder: '@storybook/builder-vite',
+  },
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
   viteFinal: async (config, { configType }) => {
-    // Add any custom configuration here
+    const { mergeConfig } = await import('vite')
 
-    return config;
+    return mergeConfig(config, {
+      // Add dependencies to pre-optimization
+      optimizeDeps: {
+        include: ['storybook-dark-mode'],
+      },
+    })
   },
-};
-export default config;
+}
+export default config

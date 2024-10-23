@@ -26,11 +26,12 @@
     "@storybook/addon-links": "^8.1.6",
     "@storybook/addon-onboarding": "^8.1.6",
     "@storybook/blocks": "^8.1.6",
+    "@storybook/builder-vite": "^8.3.6",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^8.1.6",
     "@storybook/react-vite": "^8.1.6",
-    "@storybook/test": "^8.1.6",
     "@storybook/storybook-deployer": "^2.8.12",
+    "@storybook/test": "^8.1.6",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
@@ -52,6 +53,5 @@
   "peerDependencies": {
     "react": ">=16.13.1"
   },
-
   "author": "Nick Grato"
 }
